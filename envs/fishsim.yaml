@@ -1,0 +1,12 @@
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.12
+  - click
+  - numpy
+  - pandas
+  - pyyaml
+  - scipy
+  - scikit-image
+  - pip:
+      - "git+ssh://git@github.com/Roth-Lab/FISHsim@cc3d173acbd7472d4ebfd0595c68d8ef07b9c0ef"

@@ -1,0 +1,17 @@
+channels:
+  - conda-forge
+dependencies:
+  - python >=3.7
+  - dask
+  - h5py
+  - numba
+  - numpy
+  - opencv
+  - pandas
+  - ray-default
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - pip
+  - pip:
+      - "/home/andrew/projects/serval/src/serval"

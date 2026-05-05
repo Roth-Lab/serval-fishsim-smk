@@ -1,0 +1,10 @@
+out_dir: /home/andrew/Desktop/fishsim-smk
+
+codebook_file: config/codebook.tsv
+data_org_file: config/data_org.tsv
+run_config_dir: config/runs
+runs:
+  - set1
+  - set2
+
+num_replicates: 2
