@@ -61,9 +61,7 @@ def main(args):
     else:
         decoder = nn
 
-    pipeline = DaskDecodingPipeline(
-        decoder, transforms, fit_num_iters=args.num_iters
-    )
+    pipeline = DaskDecodingPipeline(decoder, transforms, fit_num_iters=args.num_iters)
 
     pipeline.fit([imgs])
 
@@ -81,11 +79,7 @@ def load_codebook(file_name):
 
 
 def load_spot_imgs(imgs_file):
-    return ImageStack(
-        skimage.io.imread(imgs_file),
-        fov=0,
-        z=0
-    )
+    return ImageStack(skimage.io.imread(imgs_file), fov=0, z=0)
 
 
 def load_init_scaling_factors(imgs, transforms):
