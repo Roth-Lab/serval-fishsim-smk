@@ -13,13 +13,19 @@ def main(args):
 
     metrics["decoder"] = df_bulk.iloc[0]["decoder"]
 
-    metrics["average_r"] = compute_average_metric(df_bulk["r"], df_bulk["num_emitters"])
+    df_bulk["norm_emitters"] = df_bulk["num_emitters"] / df_bulk["num_emitters"].max()
 
-    metrics["average_rho"] = compute_average_metric(df_bulk["rho"], df_bulk["num_emitters"])
+    metrics["average_r"] = compute_average_metric(df_bulk["r"], df_bulk["norm_emitters"])
+
+    metrics["average_rho"] = compute_average_metric(df_bulk["rho"], df_bulk["norm_emitters"])
 
     metrics["max_r"] = df_bulk["r"].max()
 
+    metrics["num_emitters_max_r"] = df_bulk[df_bulk["r"] == df_bulk["r"].max()]["num_emitters"].max()
+
     metrics["max_rho"] = df_bulk["rho"].max()
+
+    metrics["num_emitters_max_rho"] = df_bulk[df_bulk["rho"] == df_bulk["rho"].max()]["num_emitters"].max()
 
     df_emitter = pd.read_csv(args.emitter_file, sep="\t")
     for prefix in ["exc", "loc"]:

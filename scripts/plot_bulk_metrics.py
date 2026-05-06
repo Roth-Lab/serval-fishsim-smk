@@ -15,16 +15,18 @@ def main(args):
     for decoder, file_name in in_files.items():
         df = pd.read_csv(file_name, sep="\t")
 
-        ax_r.plot(df["num_emitters"], df["r"], label=decoder)
+        df["norm_emitters"] = df["num_emitters"] / df["num_emitters"].max()
 
-        ax_rho.plot(df["num_emitters"], df["rho"], label=decoder)
+        ax_r.plot(df["norm_emitters"], df["r"], label=decoder)
 
-    ax_r.set_xlabel("Number of emitters")
+        ax_rho.plot(df["norm_emitters"], df["rho"], label=decoder)
+
+    ax_r.set_xlabel("Proportion of emitters")
     ax_r.set_ylabel("Pearson r")
     ax_r.legend()
     ax_r.set_ylim(0, 1)
 
-    ax_rho.set_xlabel("Number of emitters")
+    ax_rho.set_xlabel("Proportion of emitters")
     ax_rho.set_ylabel("Spearman rho")
     ax_rho.legend()
     ax_rho.set_ylim(0, 1)

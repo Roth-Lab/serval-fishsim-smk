@@ -1,4 +1,4 @@
 software-deployment-method: conda
 use-conda: True
-cores: 10
+cores: 12
 rerun-incomplete: True

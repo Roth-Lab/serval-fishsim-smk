@@ -5,6 +5,8 @@ data_org_file: config/data_org.tsv
 run_config_dir: config/runs
 runs:
   - set1
+  - set1a
   - set2
+  - set3
 
-num_replicates: 2
+num_replicates: 5
