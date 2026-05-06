@@ -1,0 +1,19 @@
+out_dir: /home/andrew/Desktop/fishsim-smk-papeer
+
+codebook_file: config/codebook.tsv
+data_org_file: config/data_org.tsv
+run_config_dir: config/runs
+runs:
+  - scenario1
+  - scenario2
+  - scenario3
+  - scenario4
+  - scenario5
+  - scenario6
+  - scenario7
+  - scenario8
+  - scenario9
+  - scenario10
+  - scenario11
+
+num_replicates: 1
