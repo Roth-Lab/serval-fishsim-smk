@@ -26,11 +26,16 @@ def main(args):
 
     out_df = pd.DataFrame(out_df)
 
+    if "intensity" in args.score:
+        out_df["threshold"] = -out_df["threshold"]
+
     out_df.insert(0, "run", args.run)
 
     out_df.insert(1, "replicate", args.replicate)
 
     out_df.insert(2, "decoder", args.decoder)
+
+    out_df.insert(3, "score", args.score)
 
     out_df.to_csv(args.out_file, index=False, sep="\t")
 

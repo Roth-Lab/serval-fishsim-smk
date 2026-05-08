@@ -66,6 +66,7 @@ rule compute_bulk_metrics:
         "--decoder {wildcards.decoder} "
         "--replicate {wildcards.replicate} "
         "--run {wildcards.run} "
+        "--score {wildcards.score} "
 
 
 rule plot_bulk_metrics:
@@ -90,6 +91,7 @@ rule merge_bulk_metrics:
             decoder=config.decoders,
             replicate=range(config.num_replicates),
             run=config.runs,
+            score=config.scores,
         ),
     output:
         config.bulk_metrics_file,
@@ -115,6 +117,7 @@ rule compute_emitter_metrics:
         "--decoder {wildcards.decoder} "
         "--replicate {wildcards.replicate} "
         "--run {wildcards.run} "
+        "--score {wildcards.score} "
 
 
 rule plot_emitter_metrics:
@@ -141,6 +144,7 @@ rule merge_emitter_metrics:
             decoder=config.decoders,
             replicate=range(config.num_replicates),
             run=config.runs,
+            score=config.scores,
         ),
     output:
         config.emitter_metrics_file,
@@ -169,6 +173,7 @@ rule merge_summary_metrics:
             decoder=config.decoders,
             replicate=range(config.num_replicates),
             run=config.runs,
+            score=config.scores,
         ),
     output:
         config.summary_metrics_file,

@@ -10,8 +10,9 @@ class ConfigManager(object):
         files = [self.bulk_metrics_file, self.emitter_metrics_file, self.summary_metrics_file]
         for run in self.runs:
             for rep in range(self.num_replicates):
-                files.append(str(self.bulk_metrics_plot_template).format(replicate=rep, run=run))
-                files.append(str(self.emitter_metrics_plot_template).format(replicate=rep, run=run))
+                for score in self.scores:
+                    files.append(str(self.bulk_metrics_plot_template).format(replicate=rep, run=run, score=score))
+                    files.append(str(self.emitter_metrics_plot_template).format(replicate=rep, run=run, score=score))
         return files
 
     # Input files
@@ -40,6 +41,10 @@ class ConfigManager(object):
     def runs(self):
         return self.config["runs"]
 
+    @property
+    def scores(self):
+        return ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
+
     # Directories
     @property
     def out_dir(self):
@@ -56,11 +61,11 @@ class ConfigManager(object):
 
     @property
     def bulk_metrics_template(self):
-        return self.tmp_dir.joinpath("{run}", "{replicate}", "bulk_metrics", "{decoder}.tsv.gz")
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "bulk_metrics", "{decoder}", "{score}.tsv.gz")
 
     @property
     def bulk_metrics_plot_template(self):
-        return self.out_dir.joinpath("plots", "bulk", "{run}", "{replicate}.png")
+        return self.out_dir.joinpath("plots", "bulk", "{run}", "{replicate}", "{score}.png")
 
     @property
     def emitter_metrics_file(self):
@@ -68,11 +73,11 @@ class ConfigManager(object):
 
     @property
     def emitter_metrics_template(self):
-        return self.tmp_dir.joinpath("{run}", "{replicate}", "emitter_metrics", "{decoder}.tsv.gz")
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "emitter_metrics", "{decoder}", "{score}.tsv.gz")
 
     @property
     def emitter_metrics_plot_template(self):
-        return self.out_dir.joinpath("plots", "emitter", "{run}", "{replicate}.png")
+        return self.out_dir.joinpath("plots", "emitter", "{run}", "{replicate}", "{score}.png")
 
     @property
     def run_config_template(self):
@@ -100,4 +105,4 @@ class ConfigManager(object):
 
     @property
     def summary_metrics_template(self):
-        return self.tmp_dir.joinpath("{run}", "{replicate}", "summary_metrics", "{decoder}.tsv.gz")
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "summary_metrics", "{decoder}", "{score}.tsv.gz")

@@ -39,6 +39,8 @@ def main(args):
 
     out_df.insert(2, "decoder", args.decoder)
 
+    out_df.insert(3, "score", args.score)
+
     out_df.to_csv(args.out_file, index=False, sep="\t")
 
 

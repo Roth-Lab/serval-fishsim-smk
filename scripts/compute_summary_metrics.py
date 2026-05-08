@@ -13,6 +13,8 @@ def main(args):
 
     metrics["decoder"] = df_bulk.iloc[0]["decoder"]
 
+    metrics["score"] = df_bulk.iloc[0]["score"]
+
     df_bulk["norm_emitters"] = df_bulk["num_emitters"] / df_bulk["num_emitters"].max()
 
     metrics["average_r"] = compute_average_metric(df_bulk["r"], df_bulk["norm_emitters"])
