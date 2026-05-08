@@ -9,4 +9,4 @@ dependencies:
   - scipy
   - scikit-image
   - pip:
-      - "git+ssh://git@github.com/Roth-Lab/FISHsim@cc3d173acbd7472d4ebfd0595c68d8ef07b9c0ef"
+      - "git+ssh://git@github.com/Roth-Lab/FISHsim@c0d2096e40cc57acc3223d66cd9f65ff1c49a050"
