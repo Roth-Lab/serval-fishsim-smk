@@ -1,0 +1,15 @@
+out_dir: /home/andrew/Desktop/fishsim-num-cells
+
+codebook_file: config/codebook.tsv
+data_org_file: config/data_org.tsv
+run_config_dir: config/runs/num_cells
+runs:
+  - nc_50
+  - nc_100
+  - nc_200
+  - nc_300
+  - nc_400
+  - nc_500
+  - nc_100
+
+num_replicates: 100
