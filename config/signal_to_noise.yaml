@@ -1,0 +1,14 @@
+out_dir: /home/andrew/Desktop/fishsim-num-cells
+
+codebook_file: config/codebook.tsv
+data_org_file: config/data_org.tsv
+run_config_dir: config/runs/num_cells
+runs:
+  - sn_0.1
+  - sn_0.5
+  - sn_1
+  - sn_2
+  - sn_4
+  - sn_10
+
+num_replicates: 100

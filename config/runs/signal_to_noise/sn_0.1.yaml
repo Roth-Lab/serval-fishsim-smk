@@ -1,0 +1,53 @@
+camera:
+  # Camera bias
+  bias: 100
+  # Dark current of camera
+  dark_current: 0
+  # Exposure time of imaging channel
+  exposure_time: # in seconds
+    "650": 2.0
+    "750": 2.0
+  # Camera gain
+  gain: 1.33
+  # Quantum efficiency of imaging channels
+  quantum_efficiency:
+    "650": 0.89
+    "750": 0.71
+  # Log normal read noise
+  read_noise: 1
+  # Well depth of camera (num e-)/pixel
+  well_depth: 80000
+
+simulation:
+  # Bounding box of field of view
+  boundary_box:
+    x: [ 0, 1024 ]
+    y: [ 0, 1024 ]
+    z: [ -7, 7 ]
+  # Probablity of a pixel contributing to the background
+  bg_sampling_prob: 0
+  # Probability of a bit being added (miscall)
+  bit_add_prob: 0
+  # Probability of a bit being dropped (dropout)
+  bit_drop_prob: 0
+  # Number of emitters
+  num_emitters: 30000
+  # Per round photon counts for emitters
+  photon_counts: [ 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000 ]
+  # Per round signal to cell background ratio
+  signal_to_cell_ratio: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+  # Whether the emitter coordinates are subpixel accuracy
+  subpixel: false
+  # Cell sim parameters
+  cells:
+    # Principal axis of ellipsoid cells defined in pixels (min, max)
+    axes: # pixels (min, max)
+      a: [ 10, 20 ]
+      b: [ 15, 30 ]
+      c: [ 12, 24 ]
+    # Whether to simulate different distribution for cell nucleus
+    nucleus: True
+    # Number of cells to simulate
+    num_cells: 300
+
+
