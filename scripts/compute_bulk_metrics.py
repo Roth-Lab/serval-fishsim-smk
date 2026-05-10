@@ -1,5 +1,6 @@
 from scipy.stats import pearsonr, spearmanrho
 
+import numpy as np
 import pandas as pd
 
 
@@ -41,9 +42,9 @@ def main(args):
 
 
 def compute_correlation_stats(df_pred, df_true):
-    counts_true = df_true["target"].value_counts()
+    counts_pred = np.log1p(df_pred["target"].value_counts())
 
-    counts_pred = df_pred["target"].value_counts()
+    counts_true = np.log1p(df_true["target"].value_counts())
 
     counts = pd.concat([counts_pred, counts_true], axis=1).fillna(0)
 

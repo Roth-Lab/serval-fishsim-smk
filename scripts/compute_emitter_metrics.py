@@ -132,6 +132,8 @@ def get_metrics(pred_score_df, true_score_df, prefix="exc"):
 
         metrics_df.append(row)
 
+    metrics_df.append({"threshold": 0, "tp": 0, "fp": 0, "fn": true_score_df.shape[0], "precision": 1.0, "recall": 0.0})
+
     metrics_df = pd.DataFrame(metrics_df)
 
     metrics_df = metrics_df.set_index("threshold")

@@ -14,19 +14,19 @@ def main(args):
     for decoder, file_name in in_files.items():
         df = pd.read_csv(file_name, sep="\t")
 
-        ax_loc.plot(df["loc_precision"], df["loc_recall"], label=decoder)
+        ax_loc.plot(df["loc_recall"], df["loc_precision"], label=decoder)
 
-        ax_exc.plot(df["exc_precision"], df["exc_recall"], label=decoder)
+        ax_exc.plot(df["exc_recall"], df["exc_precision"], label=decoder)
 
     ax_loc.set_title("Location")
-    ax_loc.set_xlabel("Precision")
-    ax_loc.set_ylabel("Recall")
+    ax_loc.set_xlabel("Recall")
+    ax_loc.set_ylabel("Precision")
     ax_loc.legend()
     ax_loc.set_ylim(0, 1)
 
     ax_exc.set_title("Exact")
-    ax_exc.set_xlabel("Precision")
-    ax_exc.set_ylabel("Recall")
+    ax_loc.set_xlabel("Recall")
+    ax_loc.set_ylabel("Precision")
     ax_exc.legend()
     ax_exc.set_ylim(0, 1)
 
