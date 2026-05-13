@@ -83,7 +83,7 @@ rule build_jsit_psf:
     conda:
         "envs/jsit.yaml"
     shell:
-        "pythons scripts/build_jsit_psf.py -j {params.j} -p {params.p} -s {params.s} -o {output}"
+        "python scripts/build_jsit_psf.py -j {params.j} -p {params.p} -s {params.s} -o {output}"
 
 
 rule run_jsit:
