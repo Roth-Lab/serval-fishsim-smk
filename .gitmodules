@@ -1,0 +1,3 @@
+[submodule "resources/jsit/src"]
+	path = resources/jsit/src
+	url = git@github.com:jpbryan13/JSIT.git
