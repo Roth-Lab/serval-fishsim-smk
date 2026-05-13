@@ -1,16 +1,14 @@
 from dask.distributed import Client
-
-import dask
-import pandas as pd
-import skimage
-
 from serval.codebook import Codebook
 from serval.decode.pixel import CosineOptimizedPixelDecoder, NearestNeigbourPixelDecoder, ScaledImagePixelDecoder
 from serval.decode.utils import get_imgs_hist, get_init_scaling_factors
 from serval.image import ImageStack
 from serval.pipeline import DaskDecodingPipeline
 
+import dask
+import pandas as pd
 import serval.transform
+import skimage
 
 
 def main(args):
@@ -68,6 +66,8 @@ def main(args):
     df = pipeline.predict([imgs])[0].spots
 
     df = dask.compute(df)[0]
+
+    df = df.rename(columns={"x": "y", "y": "x"})
 
     df.to_csv(args.out_file, index=False, sep="\t")
 

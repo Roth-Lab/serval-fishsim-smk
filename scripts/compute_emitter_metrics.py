@@ -7,20 +7,53 @@ import pandas as pd
 def main(args):
     df_pred = pd.read_csv(args.pred_file, sep="\t")
 
-    df_pred = df_pred.rename(columns={"x": "y", "y": "x"})
-
-    # Handle whether higher or lower is better for the score key
-    if "intensity" in args.score:
-        df_pred["score"] = -df_pred[args.score]
-
-    else:
-        df_pred["score"] = df_pred[args.score]
-
     df_true = pd.read_csv(args.true_file, sep="\t")
 
-    pred_score_df = get_pred_score_df(df_pred, df_true, nn_dist=args.nn_dist)
+    if args.decoder == "bardensr":
+        scores = ["evidence"]
 
-    true_score_df = get_true_score_df(df_pred, df_true, nn_dist=args.nn_dist)
+    elif args.decoder == "deepcell":
+        scores = ["probability"]
+
+    elif args.decoder == "jsit":
+        scores = ["mean_magnitude"]
+
+    else:
+        scores = ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
+
+    out_df = []
+
+    for s in scores:
+        if s in ["evidence", "max_intensity", "mean_intensity", "probability"]:
+            score_is_pos = True
+
+        else:
+            score_is_pos = False
+
+        out_df.append(get_score_df(df_pred, df_true, s, nn_dist=args.nn_dist, score_is_pos=score_is_pos))
+
+    out_df = pd.concat(out_df)
+
+    out_df.insert(0, "run", args.run)
+
+    out_df.insert(1, "replicate", args.replicate)
+
+    out_df.insert(2, "decoder", args.decoder)
+
+    out_df.to_csv(args.out_file, index=False, sep="\t")
+
+
+def get_score_df(df_pred, df_true, score, nn_dist=1, score_is_pos=False):
+    # Handle whether higher or lower is better for the score key
+    if score_is_pos:
+        df_pred["score"] = -df_pred[score]
+
+    else:
+        df_pred["score"] = df_pred[score]
+
+    pred_score_df = get_pred_score_df(df_pred, df_true, nn_dist=nn_dist)
+
+    true_score_df = get_true_score_df(df_pred, df_true, nn_dist=nn_dist)
 
     exc_metrics_df = get_metrics(pred_score_df, true_score_df, prefix="exc")
 
@@ -30,18 +63,12 @@ def main(args):
 
     out_df = out_df.reset_index()
 
-    if "intensity" in args.score:
+    if score_is_pos:
         out_df["threshold"] = -out_df["threshold"]
 
-    out_df.insert(0, "run", args.run)
+    out_df.insert(0, "score", score)
 
-    out_df.insert(1, "replicate", args.replicate)
-
-    out_df.insert(2, "decoder", args.decoder)
-
-    out_df.insert(3, "score", args.score)
-
-    out_df.to_csv(args.out_file, index=False, sep="\t")
+    return out_df
 
 
 def get_pred_score_df(df_pred, df_true, nn_dist=1):
@@ -161,12 +188,6 @@ if __name__ == "__main__":
     parser.add_argument("--run", required=True)
 
     parser.add_argument("--nn-dist", default=1, type=float)
-
-    parser.add_argument(
-        "--score",
-        default="mean_distance",
-        choices=["mean_distance", "min_distance", "mean_intensity", "max_intensity"],
-    )
 
     cli_args = parser.parse_args()
 

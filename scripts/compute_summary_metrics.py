@@ -7,11 +7,16 @@ def main(args):
 
     df_bulk = pd.read_csv(args.bulk_file, sep="\t")
 
+    decoder = df_bulk.iloc[0]["decoder"]
+
+    if decoder in ["cosine", "nn", "scaled"]:
+        df_bulk = df_bulk[df_bulk["score"] == "mean_distance"]
+
     metrics["run"] = df_bulk.iloc[0]["run"]
 
     metrics["replicate"] = df_bulk.iloc[0]["replicate"]
 
-    metrics["decoder"] = df_bulk.iloc[0]["decoder"]
+    metrics["decoder"] = decoder
 
     metrics["score"] = df_bulk.iloc[0]["score"]
 
@@ -30,6 +35,10 @@ def main(args):
     metrics["num_emitters_max_rho"] = df_bulk[df_bulk["rho"] == df_bulk["rho"].max()]["num_emitters"].max()
 
     df_emitter = pd.read_csv(args.emitter_file, sep="\t")
+
+    if decoder in ["cosine", "nn", "scaled"]:
+        df_emitter = df_emitter[df_emitter["score"] == "mean_distance"]
+
     for prefix in ["exc", "loc"]:
         precision = df_emitter[f"{prefix}_precision"]
 

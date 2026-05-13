@@ -34,20 +34,103 @@ rule serval_codebook:
         "python scripts/convert_codebook_to_serval_codebook.py -c {input.c} -d {input.d} -o {output}"
 
 
-rule fit_serval:
+rule run_bardensr:
+    input:
+        c=config.codebook_file,
+        i=config.sim_img_template,
+    output:
+        config.spots_template,
+    wildcard_constraints:
+        decoder="bardensr",
+    threads: config.bardensr_threads
+    conda:
+        "envs/bardensr.yaml"
+    shell:
+        "python scripts/run_bardensr.py -c {input.c} -i {input.i} -o {output} -t {threads}"
+
+
+rule run_deepcell:
+    input:
+        c=config.codebook_file,
+        d=config.data_org_file,
+        i=config.sim_img_template,
+    output:
+        config.spots_template,
+    params:
+        config.deepcell_model_path,
+    wildcard_constraints:
+        decoder="deepcell",
+    conda:
+        "envs/deepcell.yaml"
+    threads: config.deepcell_threads
+    shell:
+        "python scripts/run_deepcell.py "
+        "-c {input.c} "
+        "-d {input.d} "
+        "-i {input.i} "
+        "-m {params} "
+        "-o {output} "
+        "-t {threads}"
+
+
+rule build_jsit_psf:
+    output:
+        config.jsit_psf_file,
+    params:
+        j=config.jsit_src_dir,
+        p=config.jsit_patch_size,
+        s=config.jsit_scale_factor,
+    conda:
+        "envs/jsit.yaml"
+    shell:
+        "pythons scripts/build_jsit_psf.py -j {params.j} -p {params.p} -s {params.s} -o {output}"
+
+
+rule run_jsit:
+    input:
+        c=config.codebook_file,
+        i=config.sim_img_template,
+        p=config.jsit_psf_file,
+    output:
+        config.spots_template,
+    params:
+        j=config.jsit_src_dir,
+        p=config.jsit_patch_size,
+        s=config.jsit_scale_factor,
+    wildcard_constraints:
+        decoder="jsit",
+    conda:
+        "envs/jsit.yaml"
+    threads: config.jsit_threads
+    shell:
+        "python scripts/run_jsit.py "
+        "-c {input.c} "
+        "-i {input.i} "
+        "-j {params.j} "
+        "-p {input.p} "
+        "-o {output} "
+        "--patch-size {params.p} "
+        "--scale-factor {params.s} "
+
+
+rule run_serval:
     input:
         c=config.serval_codebook_file,
         i=config.sim_img_template,
     output:
         config.spots_template,
+    params:
+        config.get_decoder_args,
+    wildcard_constraints:
+        decoder="cosine|cosine-np|nn|scaled",
     conda:
         "envs/serval.yaml"
     shell:
-        "python scripts/fit.py "
+        "python scripts/run_serval.py "
         "-c {input.c} "
         "-i {input.i} "
         "-o {output} "
-        "--decoder {wildcards.decoder}"
+        "{params}"
 
 
 rule compute_bulk_metrics:
@@ -65,15 +148,12 @@ rule compute_bulk_metrics:
         "-o {output} "
         "--decoder {wildcards.decoder} "
         "--replicate {wildcards.replicate} "
-        "--run {wildcards.run} "
-        "--score {wildcards.score} "
+        "--run {wildcards.run}"
 
 
 rule plot_bulk_metrics:
     input:
-        expand(
-            config.bulk_metrics_template, decoder=config.decoders, allow_missing=True
-        ),
+        expand(config.bulk_metrics_template, decoder=config.decoders, allow_missing=True),
     output:
         config.bulk_metrics_plot_template,
     params:
@@ -91,7 +171,6 @@ rule merge_bulk_metrics:
             decoder=config.decoders,
             replicate=range(config.num_replicates),
             run=config.runs,
-            score=config.scores,
         ),
     output:
         config.bulk_metrics_file,
@@ -116,8 +195,7 @@ rule compute_emitter_metrics:
         "-o {output} "
         "--decoder {wildcards.decoder} "
         "--replicate {wildcards.replicate} "
-        "--run {wildcards.run} "
-        "--score {wildcards.score} "
+        "--run {wildcards.run}"
 
 
 rule plot_emitter_metrics:
@@ -144,7 +222,6 @@ rule merge_emitter_metrics:
             decoder=config.decoders,
             replicate=range(config.num_replicates),
             run=config.runs,
-            score=config.scores,
         ),
     output:
         config.emitter_metrics_file,
@@ -173,7 +250,6 @@ rule merge_summary_metrics:
             decoder=config.decoders,
             replicate=range(config.num_replicates),
             run=config.runs,
-            score=config.scores,
         ),
     output:
         config.summary_metrics_file,

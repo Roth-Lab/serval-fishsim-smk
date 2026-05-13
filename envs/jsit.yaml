@@ -1,0 +1,11 @@
+channels:
+  - conda-forge
+dependencies:
+  - numba
+  - numpy
+  - octave
+  - octave-image >= 2.2
+  - oct2py
+  - pandas
+  - scikit-image
+  - threadpoolctl

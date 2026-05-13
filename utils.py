@@ -8,11 +8,11 @@ class ConfigManager(object):
     @property
     def pipeline_files(self):
         files = [self.bulk_metrics_file, self.emitter_metrics_file, self.summary_metrics_file]
-        for run in self.runs:
-            for rep in range(self.num_replicates):
-                for score in self.scores:
-                    files.append(str(self.bulk_metrics_plot_template).format(replicate=rep, run=run, score=score))
-                    files.append(str(self.emitter_metrics_plot_template).format(replicate=rep, run=run, score=score))
+        # for run in self.runs:
+        #     for rep in range(self.num_replicates):
+        #         for score in self.scores:
+        #             files.append(str(self.bulk_metrics_plot_template).format(replicate=rep, run=run, score=score))
+        #             files.append(str(self.emitter_metrics_plot_template).format(replicate=rep, run=run, score=score))
         return files
 
     # Input files
@@ -25,13 +25,41 @@ class ConfigManager(object):
         return pathlib.Path(self.config["data_org_file"])
 
     @property
+    def deepcell_model_path(self):
+        return pathlib.Path("resources/deepcell/SpotDetection-8")
+
+    @property
+    def jsit_src_dir(self):
+        return pathlib.Path("resources/jsit/src")
+
+    @property
     def run_config_dir(self):
         return pathlib.Path(self.config["run_config_dir"])
 
     # Params
     @property
+    def bardensr_threads(self):
+        return 2
+
+    @property
     def decoders(self):
-        return ["cosine", "nn", "scaled"]
+        return ["bardensr", "deepcell", "jsit", "cosine", "cosine-np", "nn", "scaled"]
+
+    @property
+    def jsit_patch_size(self):
+        return self.config["jsit"]["patch_size"]
+
+    @property
+    def jsit_scale_factor(self):
+        return self.config["jsit"]["scale_factor"]
+
+    @property
+    def jsit_threads(self):
+        return 2
+
+    @property
+    def deepcell_threads(self):
+        return 2
 
     @property
     def num_replicates(self):
@@ -40,10 +68,6 @@ class ConfigManager(object):
     @property
     def runs(self):
         return self.config["runs"]
-
-    @property
-    def scores(self):
-        return ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
 
     # Directories
     @property
@@ -61,11 +85,11 @@ class ConfigManager(object):
 
     @property
     def bulk_metrics_template(self):
-        return self.tmp_dir.joinpath("{run}", "{replicate}", "bulk_metrics", "{decoder}", "{score}.tsv.gz")
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "bulk_metrics", "{decoder}.tsv.gz")
 
     @property
     def bulk_metrics_plot_template(self):
-        return self.out_dir.joinpath("plots", "bulk", "{run}", "{replicate}", "{score}.png")
+        return self.out_dir.joinpath("plots", "bulk", "{run}", "{replicate}.png")
 
     @property
     def emitter_metrics_file(self):
@@ -73,11 +97,15 @@ class ConfigManager(object):
 
     @property
     def emitter_metrics_template(self):
-        return self.tmp_dir.joinpath("{run}", "{replicate}", "emitter_metrics", "{decoder}", "{score}.tsv.gz")
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "emitter_metrics", "{decoder}.tsv.gz")
 
     @property
     def emitter_metrics_plot_template(self):
-        return self.out_dir.joinpath("plots", "emitter", "{run}", "{replicate}", "{score}.png")
+        return self.out_dir.joinpath("plots", "emitter", "{run}", "{replicate}.png")
+
+    @property
+    def jsit_psf_file(self):
+        return self.tmp_dir.joinpath("jsit_psf.npy")
 
     @property
     def run_config_template(self):
@@ -105,4 +133,20 @@ class ConfigManager(object):
 
     @property
     def summary_metrics_template(self):
-        return self.tmp_dir.joinpath("{run}", "{replicate}", "summary_metrics", "{decoder}", "{score}.tsv.gz")
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "summary_metrics", "{decoder}.tsv.gz")
+
+    # Helper function
+    def get_decoder_args(self, wildcards):
+        args = []
+
+        if wildcards.decoder == "cosine-np":
+            args.extend(["--penalty-entropy 0", "--penalty-l2 0"])
+
+            decoder = "cosine"
+
+        else:
+            decoder = wildcards.decoder
+
+        args.append(f"--decoder {decoder}")
+
+        return " ".join(args)

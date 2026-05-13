@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.6
+  - pip
+  - pip:
+      - "git+https://github.com/jacksonloper/bardensr@dfdafe9055be322b286369d21e3349204c1f6fc3"

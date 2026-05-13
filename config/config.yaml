@@ -5,8 +5,16 @@ data_org_file: config/data_org.tsv
 run_config_dir: config/runs
 runs:
   - set1
-  - set1a
-  - set2
-  - set3
+#  - set1a
+#  - set1b
+#  - set2
+#  - set3
+#  - set4
+#  - set5
+#  - set6
 
-num_replicates: 5
+num_replicates: 1
+
+jsit:
+  patch_size: 32
+  scale_factor: 3

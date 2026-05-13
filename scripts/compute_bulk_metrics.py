@@ -7,14 +7,49 @@ import pandas as pd
 def main(args):
     df_pred = pd.read_csv(args.pred_file, sep="\t")
 
-    # Handle whether higher or lower is better for the score key
-    if "intensity" in args.score:
-        df_pred["score"] = -df_pred[args.score]
+    df_true = pd.read_csv(args.true_file, sep="\t")
+
+    if args.decoder == "bardensr":
+        scores = ["evidence"]
+
+    elif args.decoder == "deepcell":
+        scores = ["probability"]
+
+    elif args.decoder == "jsit":
+        scores = ["mean_magnitude"]
 
     else:
-        df_pred["score"] = df_pred[args.score]
+        scores = ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
 
-    df_true = pd.read_csv(args.true_file, sep="\t")
+    out_df = []
+
+    for s in scores:
+        if s in ["evidence", "max_intensity", "mean_intensity", "probability"]:
+            score_is_pos = True
+
+        else:
+            score_is_pos = False
+
+        out_df.append(get_score_df(df_pred, df_true, s, score_is_pos=score_is_pos))
+
+    out_df = pd.concat(out_df)
+
+    out_df.insert(0, "run", args.run)
+
+    out_df.insert(1, "replicate", args.replicate)
+
+    out_df.insert(2, "decoder", args.decoder)
+
+    out_df.to_csv(args.out_file, index=False, sep="\t")
+
+
+def get_score_df(df_pred, df_true, score, score_is_pos=False):
+    # Handle whether higher or lower is better for the score key
+    if score_is_pos:
+        df_pred["score"] = -df_pred[score]
+
+    else:
+        df_pred["score"] = df_pred[score]
 
     out_df = []
 
@@ -27,18 +62,12 @@ def main(args):
 
     out_df = pd.DataFrame(out_df)
 
-    if "intensity" in args.score:
+    if score_is_pos:
         out_df["threshold"] = -out_df["threshold"]
 
-    out_df.insert(0, "run", args.run)
+    out_df.insert(0, "score", score)
 
-    out_df.insert(1, "replicate", args.replicate)
-
-    out_df.insert(2, "decoder", args.decoder)
-
-    out_df.insert(3, "score", args.score)
-
-    out_df.to_csv(args.out_file, index=False, sep="\t")
+    return out_df
 
 
 def compute_correlation_stats(df_pred, df_true):
@@ -79,12 +108,6 @@ if __name__ == "__main__":
     parser.add_argument("--replicate", required=True)
 
     parser.add_argument("--run", required=True)
-
-    parser.add_argument(
-        "--score",
-        default="mean_distance",
-        choices=["mean_distance", "min_distance", "mean_intensity", "max_intensity"],
-    )
 
     cli_args = parser.parse_args()
 
