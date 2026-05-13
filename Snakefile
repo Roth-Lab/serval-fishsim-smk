@@ -95,6 +95,7 @@ rule run_jsit:
         config.spots_template,
     params:
         j=config.jsit_src_dir,
+        e=config.jsit_penalty,
         p=config.jsit_patch_size,
         s=config.jsit_scale_factor,
     wildcard_constraints:
@@ -110,7 +111,8 @@ rule run_jsit:
         "-p {input.p} "
         "-o {output} "
         "--patch-size {params.p} "
-        "--scale-factor {params.s} "
+        "--penalty {params.e} "
+        "--scale-factor {params.s}"
 
 
 rule run_serval:

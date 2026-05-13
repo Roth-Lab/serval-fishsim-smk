@@ -39,7 +39,11 @@ class ConfigManager(object):
     # Params
     @property
     def bardensr_threads(self):
-        return 2
+        return self.config["bardensr"]["num_threads"]
+
+    @property
+    def deepcell_threads(self):
+        return self.config["deepcell"]["num_threads"]
 
     @property
     def decoders(self):
@@ -50,16 +54,16 @@ class ConfigManager(object):
         return self.config["jsit"]["patch_size"]
 
     @property
+    def jsit_penalty(self):
+        return self.config["jsit"]["penalty"]
+
+    @property
     def jsit_scale_factor(self):
         return self.config["jsit"]["scale_factor"]
 
     @property
     def jsit_threads(self):
-        return 2
-
-    @property
-    def deepcell_threads(self):
-        return 2
+        return self.config["jsit"]["num_threads"]
 
     @property
     def num_replicates(self):
