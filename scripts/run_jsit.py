@@ -22,7 +22,9 @@ def main(args):
 
     oc.eval("pkg load image")
 
-    cb = pd.read_csv(args.codebook_file, index_col="target", sep="\t").values.astype(float)
+    cb_df = pd.read_csv(args.codebook_file, index_col="target", sep="\t")
+
+    cb = cb_df.values.astype(float)
 
     imgs = skimage.io.imread(args.imgs_file).astype(float)
 
@@ -76,9 +78,11 @@ def main(args):
 
     out_df = pd.DataFrame(out_df, columns=["x", "y", "barcode_id", "area", "mean_intensity", "mean_magnitude"])
 
-    out_df["barcode_id"] = out_df["barcode_id"].astype(int)
+    out_df["barcode_id"] = out_df["barcode_id"].astype(int) - 1
 
     out_df["area"] = out_df["area"].astype(int)
+
+    out_df["target"] = cb_df.index[out_df["barcode_id"]]
 
     out_df.to_csv(args.out_file, index=False, sep="\t")
 
@@ -168,7 +172,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--patch-size", default=32, type=int)
 
-    parser.add_argument("--penalty", default=1, type=float)
+    parser.add_argument("--penalty", default=75, type=float)
 
     parser.add_argument("--scale-factor", default=3, type=int)
 
