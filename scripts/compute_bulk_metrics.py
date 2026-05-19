@@ -16,7 +16,7 @@ def main(args):
         scores = ["probability"]
 
     elif args.decoder == "jsit":
-        scores = ["mean_magnitude"]
+        scores = ["mean_intensity"]
 
     else:
         scores = ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
@@ -44,6 +44,11 @@ def main(args):
 
 
 def get_score_df(df_pred, df_true, score, score_is_pos=False):
+    if df_pred.empty:
+        return pd.DataFrame(
+            [{"score": score, "threshold": 0, "r": 0, "r_p": 1, "rho": 0, "rho_p": 1, "num_emitters": 0}]
+        )
+
     # Handle whether higher or lower is better for the score key
     if score_is_pos:
         df_pred["score"] = -df_pred[score]

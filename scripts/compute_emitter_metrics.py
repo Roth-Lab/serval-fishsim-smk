@@ -15,8 +15,8 @@ def main(args):
     elif args.decoder == "deepcell":
         scores = ["probability"]
 
-    elif args.decoder == "jsit":
-        scores = ["mean_magnitude"]
+    elif "jsit" in args.decoder:
+        scores = ["mean_intensity"]
 
     else:
         scores = ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
@@ -44,6 +44,9 @@ def main(args):
 
 
 def get_score_df(df_pred, df_true, score, nn_dist=1, score_is_pos=False):
+    if df_pred.empty:
+        return pd.DataFrame()
+
     # Handle whether higher or lower is better for the score key
     if score_is_pos:
         df_pred["score"] = -df_pred[score]

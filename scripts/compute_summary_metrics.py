@@ -7,6 +7,10 @@ def main(args):
 
     df_bulk = pd.read_csv(args.bulk_file, sep="\t")
 
+    if df_bulk.empty:
+        open(args.out_file, "w").close()
+        return
+
     decoder = df_bulk.iloc[0]["decoder"]
 
     if decoder in ["cosine", "nn", "scaled"]:
@@ -35,6 +39,10 @@ def main(args):
     metrics["num_emitters_max_rho"] = df_bulk[df_bulk["rho"] == df_bulk["rho"].max()]["num_emitters"].max()
 
     df_emitter = pd.read_csv(args.emitter_file, sep="\t")
+
+    if df_emitter.empty:
+        open(args.out_file, "w").close()
+        return
 
     if decoder in ["cosine", "nn", "scaled"]:
         df_emitter = df_emitter[df_emitter["score"] == "mean_distance"]
