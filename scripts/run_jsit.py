@@ -30,8 +30,6 @@ def main(args):
 
     imgs = np.moveaxis(imgs, 0, -1)
 
-    imgs = oc.imgaussfilt(imgs, 0.5) - oc.imgaussfilt(imgs, 3)
-
     A = np.load(args.psf_file)
 
     lf = oc.svd(cb @ cb.T)[0, 0] * oc.svd(A @ A.T)[0, 0]
@@ -72,17 +70,25 @@ def main(args):
 
     i_img = oc.imresize(i_img, args.scale_factor)
 
-    out_df = oc.dIm2q_ex(d_img, i_img, x_img, args.min_area, cb)
+    try:
+        out_df = oc.dIm2q_ex(d_img, i_img, x_img, args.min_area, cb)
 
-    out_df[:, :2] = out_df[:, :2] / args.scale_factor
+        out_df[:, :2] = out_df[:, :2] / args.scale_factor
 
-    out_df = pd.DataFrame(out_df, columns=["x", "y", "barcode_id", "area", "mean_intensity", "mean_magnitude"])
+        out_df = pd.DataFrame(out_df, columns=["y", "x", "barcode_id", "area", "mean_intensity", "mean_magnitude"])
 
-    out_df["barcode_id"] = out_df["barcode_id"].astype(int) - 1
+        out_df["barcode_id"] = out_df["barcode_id"].astype(int) - 1
 
-    out_df["area"] = out_df["area"].astype(int)
+        out_df["area"] = out_df["area"].astype(int)
 
-    out_df["target"] = cb_df.index[out_df["barcode_id"]]
+        out_df["target"] = cb_df.index[out_df["barcode_id"]]
+
+        out_df["x"] = out_df["x"] - 1
+
+        out_df["y"] = out_df["y"] - 1
+
+    except oct2py.utils.Oct2PyError:
+        out_df = pd.DataFrame([], columns=["y", "x", "barcode_id", "area", "mean_intensity", "mean_magnitude"])
 
     out_df.to_csv(args.out_file, index=False, sep="\t")
 
