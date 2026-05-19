@@ -54,8 +54,12 @@ class ConfigManager(object):
         return self.config["jsit"]["patch_size"]
 
     @property
-    def jsit_penalty(self):
-        return self.config["jsit"]["penalty"]
+    def jsit_penalties(self):
+        return [1, 25, 50, 75, 100, 200]
+
+    @property
+    def jsit_thresholds(self):
+        return [0, 0.05, 0.1, 0.2, 0.25]
 
     @property
     def jsit_scale_factor(self):
@@ -108,6 +112,18 @@ class ConfigManager(object):
         return self.out_dir.joinpath("plots", "emitter", "{run}", "{replicate}.png")
 
     @property
+    def jsit_emitter_metrics_template(self):
+        return self.tmp_dir.joinpath(
+            "{run}", "{replicate}", "jsit", "{jsit_penalty}", "{jsit_threshold}", "emitter_metrics.tsv.gz"
+        )
+
+    @property
+    def jsit_spots_template(self):
+        return self.tmp_dir.joinpath(
+            "{run}", "{replicate}", "jsit", "{jsit_penalty}", "{jsit_threshold}", "spots.tsv.gz"
+        )
+
+    @property
     def jsit_psf_file(self):
         return self.tmp_dir.joinpath("jsit_psf.npy")
 
@@ -126,6 +142,10 @@ class ConfigManager(object):
     @property
     def sim_img_template(self):
         return self.tmp_dir.joinpath("{run}", "{replicate}", "spot_img.tif")
+
+    @property
+    def sim_pp_img_template(self):
+        return self.tmp_dir.joinpath("{run}", "{replicate}", "pp_spot_img.tif")
 
     @property
     def spots_template(self):

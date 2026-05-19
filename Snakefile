@@ -86,20 +86,30 @@ rule build_jsit_psf:
         "python scripts/build_jsit_psf.py -j {params.j} -p {params.p} -s {params.s} -o {output}"
 
 
+rule preprocess_imgs:
+    input:
+        config.sim_img_template,
+    output:
+        config.sim_pp_img_template,
+    conda:
+        "envs/serval.yaml"
+    shell:
+        "python scripts/preprocess.py -i {input} -o {output}"
+
+
 rule run_jsit:
     input:
         c=config.codebook_file,
-        i=config.sim_img_template,
+        i=config.sim_pp_img_template,
         p=config.jsit_psf_file,
     output:
-        config.spots_template,
+        config.jsit_spots_template,
     params:
         j=config.jsit_src_dir,
-        e=config.jsit_penalty,
         p=config.jsit_patch_size,
         s=config.jsit_scale_factor,
-    wildcard_constraints:
-        decoder="jsit",
+    # wildcard_constraints:
+    #     decoder="jsit",
     conda:
         "envs/jsit.yaml"
     threads: config.jsit_threads
@@ -111,8 +121,51 @@ rule run_jsit:
         "-p {input.p} "
         "-o {output} "
         "--patch-size {params.p} "
-        "--penalty {params.e} "
-        "--scale-factor {params.s}"
+        "--penalty {wildcards.jsit_penalty} "
+        "--scale-factor {params.s} "
+        "--sparsity-threshold {wildcards.jsit_threshold}"
+
+
+rule compute_jsit_emitter_metrics:
+    input:
+        p=config.jsit_spots_template,
+        t=config.sim_emitter_template,
+    output:
+        config.jsit_emitter_metrics_template,
+    conda:
+        "envs/python.yaml"
+    shell:
+        "python scripts/compute_emitter_metrics.py "
+        "-p {input.p} "
+        "-t {input.t} "
+        "-o {output} "
+        "--decoder jsit-{wildcards.jsit_penalty}-{wildcards.jsit_threshold} "
+        "--replicate {wildcards.replicate} "
+        "--run {wildcards.run}"
+
+
+rule select_best_jsit:
+    input:
+        e=expand(
+            config.jsit_emitter_metrics_template,
+            jsit_penalty=config.jsit_penalties,
+            jsit_threshold=config.jsit_thresholds,
+            allow_missing=True,
+        ),
+        s=expand(
+            config.jsit_spots_template,
+            jsit_penalty=config.jsit_penalties,
+            jsit_threshold=config.jsit_thresholds,
+            allow_missing=True,
+        ),
+    output:
+        config.spots_template,
+    wildcard_constraints:
+        decoder="jsit",
+    conda:
+        "envs/python.yaml"
+    shell:
+        "python scripts/select_best_jsit_run.py -e {input.e} -s {input.s} -o {output}"
 
 
 rule run_serval:
