@@ -120,6 +120,7 @@ rule run_jsit:
         "-j {params.j} "
         "-p {input.p} "
         "-o {output} "
+        "-t {threads} "
         "--patch-size {params.p} "
         "--penalty {wildcards.jsit_penalty} "
         "--scale-factor {params.s} "
