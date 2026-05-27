@@ -24,9 +24,13 @@ def main(args):
 
             best_val = val
 
-    df = pd.read_csv(best_file, sep="\t")
+    if best_file is  None:
+        df = pd.DataFrame([])
 
-    df["decoder"] = "jsit"
+    else:
+        df = pd.read_csv(best_file, sep="\t")
+
+        df["decoder"] = "jsit"
 
     df.to_csv(args.out_file, index=False, sep="\t")
 

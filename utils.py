@@ -47,7 +47,8 @@ class ConfigManager(object):
 
     @property
     def decoders(self):
-        return ["bardensr", "deepcell", "jsit", "cosine", "cosine-np", "nn", "scaled"]
+#        return ["bardensr", "deepcell", "jsit", "cosine", "cosine-np", "nn", "scaled"]
+        return ["bardensr", "deepcell", "cosine", "cosine-np", "nn", "scaled"]
 
     @property
     def jsit_patch_size(self):
@@ -55,11 +56,11 @@ class ConfigManager(object):
 
     @property
     def jsit_penalties(self):
-        return [1, 25, 50, 75, 100, 200]
+        return [0.01, 1, 50, 100, 150, 500]
 
     @property
     def jsit_thresholds(self):
-        return [0, 0.05, 0.1, 0.2, 0.25]
+        return [0, 0.1, 0.2]
 
     @property
     def jsit_scale_factor(self):

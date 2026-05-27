@@ -14,6 +14,9 @@ default-resources:
     runtime: f"{120 * attempt}m"
 
 set-resources:
+  compute_bulk_metrics:
+    mem_mb: 2048 * attempt
+    runtime: f"{600 * attempt}m"
   simulate_data:
     mem_mb: 4096 * attempt
     runtime: f"{240 * attempt}m"

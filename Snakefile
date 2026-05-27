@@ -141,6 +141,7 @@ rule compute_jsit_emitter_metrics:
         "-t {input.t} "
         "-o {output} "
         "--decoder jsit-{wildcards.jsit_penalty}-{wildcards.jsit_threshold} "
+        "--nn-dist 1 "
         "--replicate {wildcards.replicate} "
         "--run {wildcards.run}"
 
@@ -250,6 +251,7 @@ rule compute_emitter_metrics:
         "-t {input.t} "
         "-o {output} "
         "--decoder {wildcards.decoder} "
+        "--nn-dist 1 "
         "--replicate {wildcards.replicate} "
         "--run {wildcards.run}"
 
