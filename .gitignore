@@ -1,3 +1,7 @@
 *.idea
 *.snakemake
 *__pycache__*
+*.png
+*.gz
+*.tif
+*.zip
