@@ -37,9 +37,9 @@ bulk_df = bulk_df[
 ].copy()
 
 # --------------------------------------------------
-# Compute max Pearson r per run x replicate x decoder
+# Compute max Pearson r
 # --------------------------------------------------
-idx = (
+idx_r = (
     bulk_df
     .dropna(subset=["r"])
     .groupby(["run", "replicate", "decoder"])["r"]
@@ -47,23 +47,48 @@ idx = (
 )
 
 max_r_df = bulk_df.loc[
-    idx,
+    idx_r,
     ["run", "replicate", "decoder", "r"]
 ].copy()
 
 max_r_df = max_r_df.rename(columns={"r": "max_r"})
 
 # --------------------------------------------------
+# Compute max Spearman rho
+# --------------------------------------------------
+idx_rho = (
+    bulk_df
+    .dropna(subset=["rho"])
+    .groupby(["run", "replicate", "decoder"])["rho"]
+    .idxmax()
+)
+
+max_rho_df = bulk_df.loc[
+    idx_rho,
+    ["run", "replicate", "decoder", "rho"]
+].copy()
+
+max_rho_df = max_rho_df.rename(columns={"rho": "max_rho"})
+
+# --------------------------------------------------
 # Merge transcript-level and abundance metrics
 # --------------------------------------------------
-df = reviewer_summary_df.merge(
-    max_r_df,
-    on=["run", "replicate", "decoder"],
-    how="inner",
+df = (
+    reviewer_summary_df
+    .merge(
+        max_r_df,
+        on=["run", "replicate", "decoder"],
+        how="inner",
+    )
+    .merge(
+        max_rho_df,
+        on=["run", "replicate", "decoder"],
+        how="inner",
+    )
 )
 
 # --------------------------------------------------
-# Optional: exclude Scenario 11 from primary benchmark
+# Exclude Scenario 11 from primary benchmark
 # --------------------------------------------------
 df_primary = df[df["run"] != "scenario11"].copy()
 
@@ -88,13 +113,17 @@ df_primary["decoder_label"] = (
 )
 
 # --------------------------------------------------
-# Metrics to summarize
+# Metrics to summarize: 4 main + 4 supplementary
 # --------------------------------------------------
 metrics = [
     "exc_recall_at_max_f1",
     "exc_fdr_at_max_f1",
     "exc_max_f1",
     "max_r",
+    "max_rho",
+    "exc_average_precision",
+    "loc_max_f1",
+    "loc_recall_at_max_f1",
 ]
 
 metric_labels = {
@@ -102,7 +131,18 @@ metric_labels = {
     "exc_fdr_at_max_f1": "Exact FDR",
     "exc_max_f1": "Exact F1",
     "max_r": "Max Pearson r",
+    "max_rho": "Max Spearman rho",
+    "exc_average_precision": "Exact average precision",
+    "loc_max_f1": "Localization F1",
+    "loc_recall_at_max_f1": "Localization recall",
 }
+
+# --------------------------------------------------
+# Check missing columns
+# --------------------------------------------------
+missing = [m for m in metrics if m not in df_primary.columns]
+if missing:
+    raise ValueError(f"Missing metric columns: {missing}")
 
 # --------------------------------------------------
 # Full numeric summary table
@@ -117,7 +157,7 @@ summary_numeric = (
 summary_numeric.to_csv(
     os.path.join(
         OUTDIR,
-        "simulation_primary_metrics_summary_numeric.csv"
+        "simulation_all_metrics_summary_numeric.csv",
     )
 )
 
@@ -139,7 +179,6 @@ for decoder, g in df_primary.groupby("decoder_label"):
 
 paper_table = pd.DataFrame(rows)
 
-# Optional ordering
 decoder_order = [
     "Cosine",
     "MERlin-scaled",
@@ -159,7 +198,7 @@ paper_table = paper_table.sort_values("Decoder")
 paper_table.to_csv(
     os.path.join(
         OUTDIR,
-        "simulation_primary_metrics_manuscript_table.csv"
+        "simulation_all_metrics_manuscript_table.csv",
     ),
     index=False,
 )

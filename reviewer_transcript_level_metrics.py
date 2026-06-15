@@ -4,12 +4,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
+from sklearn.metrics import auc
 
 OUTDIR = r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new\reviewer_transcript_level_metrics"
 os.makedirs(OUTDIR, exist_ok=True)
 
 # --------------------------------------------------
-# 1. Clean decoder names / remove old cosine
+# 1. Load data / clean decoder names
 # --------------------------------------------------
 base_dir = Path(r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new")
 
@@ -31,6 +32,7 @@ def safe_divide(num, den):
 # 3. Recompute precision, recall, FDR, F1 from TP/FP/FN
 # --------------------------------------------------
 for mode in ["exc", "loc"]:
+
     tp = emitter_df[f"{mode}_tp"]
     fp = emitter_df[f"{mode}_fp"]
     fn = emitter_df[f"{mode}_fn"]
@@ -40,18 +42,79 @@ for mode in ["exc", "loc"]:
     emitter_df[f"{mode}_fdr_calc"] = safe_divide(fp, tp + fp)
 
     emitter_df[f"{mode}_f1_calc"] = safe_divide(
-        2 * emitter_df[f"{mode}_precision_calc"] * emitter_df[f"{mode}_recall_calc"],
-        emitter_df[f"{mode}_precision_calc"] + emitter_df[f"{mode}_recall_calc"],
+        2
+        * emitter_df[f"{mode}_precision_calc"]
+        * emitter_df[f"{mode}_recall_calc"],
+        emitter_df[f"{mode}_precision_calc"]
+        + emitter_df[f"{mode}_recall_calc"],
     )
 
 # --------------------------------------------------
-# 4. For each run/replicate/decoder, select threshold with max F1
+# 4. Compute average precision from threshold sweep
 # --------------------------------------------------
 group_cols = ["run", "replicate", "decoder"]
 
+ap_rows = []
+
+for (run, replicate, decoder), g in emitter_df.groupby(group_cols):
+
+    row = {
+        "run": run,
+        "replicate": replicate,
+        "decoder": decoder,
+    }
+
+    for mode in ["exc", "loc"]:
+
+        precision_col = f"{mode}_precision_calc"
+        recall_col = f"{mode}_recall_calc"
+
+        pr = g[[precision_col, recall_col]].dropna().copy()
+
+        if pr.empty:
+            row[f"{mode}_average_precision"] = np.nan
+            continue
+
+        # Sort by recall increasing for PR integration
+        pr = pr.sort_values(recall_col)
+
+        # Remove duplicate recall values, keeping highest precision
+        pr = (
+            pr.groupby(recall_col, as_index=False)[precision_col]
+            .max()
+            .sort_values(recall_col)
+        )
+
+        recall = pr[recall_col].to_numpy()
+        precision = pr[precision_col].to_numpy()
+
+        # Add endpoints if needed
+        if len(recall) == 0:
+            ap = np.nan
+        else:
+            if recall[0] > 0:
+                recall = np.insert(recall, 0, 0.0)
+                precision = np.insert(precision, 0, precision[0])
+
+            if recall[-1] < 1:
+                recall = np.append(recall, 1.0)
+                precision = np.append(precision, precision[-1])
+
+            ap = auc(recall, precision)
+
+        row[f"{mode}_average_precision"] = ap
+
+    ap_rows.append(row)
+
+ap_df = pd.DataFrame(ap_rows)
+
+# --------------------------------------------------
+# 5. For each run/replicate/decoder, select threshold with max F1
+# --------------------------------------------------
 summary_rows = []
 
 for mode in ["exc", "loc"]:
+
     f1_col = f"{mode}_f1_calc"
 
     idx = (
@@ -98,23 +161,32 @@ reviewer_summary_df = summary_rows[0].merge(
     how="outer",
 )
 
+# Add AP columns
+reviewer_summary_df = reviewer_summary_df.merge(
+    ap_df,
+    on=group_cols,
+    how="left",
+)
+
 reviewer_summary_df.to_csv(
     os.path.join(OUTDIR, "reviewer_transcript_level_summary_by_replicate.csv"),
     index=False,
 )
 
 # --------------------------------------------------
-# 5. Aggregate by run and decoder
+# 6. Aggregate by run and decoder
 # --------------------------------------------------
 metric_cols = [
     "exc_precision_at_max_f1",
     "exc_recall_at_max_f1",
     "exc_fdr_at_max_f1",
     "exc_max_f1",
+    "exc_average_precision",
     "loc_precision_at_max_f1",
     "loc_recall_at_max_f1",
     "loc_fdr_at_max_f1",
     "loc_max_f1",
+    "loc_average_precision",
 ]
 
 summary_by_run_decoder = (
@@ -136,7 +208,7 @@ summary_by_run_decoder.to_csv(
 )
 
 # --------------------------------------------------
-# 6. Overall aggregate by decoder
+# 7. Overall aggregate by decoder
 # --------------------------------------------------
 summary_by_decoder = (
     reviewer_summary_df
@@ -157,17 +229,19 @@ summary_by_decoder.to_csv(
 )
 
 # --------------------------------------------------
-# 7. Long format for plotting
+# 8. Long format for plotting
 # --------------------------------------------------
 plot_metrics = [
     "exc_precision_at_max_f1",
     "exc_recall_at_max_f1",
     "exc_fdr_at_max_f1",
     "exc_max_f1",
+    "exc_average_precision",
     "loc_precision_at_max_f1",
     "loc_recall_at_max_f1",
     "loc_fdr_at_max_f1",
     "loc_max_f1",
+    "loc_average_precision",
 ]
 
 metric_labels = {
@@ -175,10 +249,12 @@ metric_labels = {
     "exc_recall_at_max_f1": "Exact recall",
     "exc_fdr_at_max_f1": "Exact FDR",
     "exc_max_f1": "Exact F1",
+    "exc_average_precision": "Exact average precision",
     "loc_precision_at_max_f1": "Localization precision",
     "loc_recall_at_max_f1": "Localization recall",
     "loc_fdr_at_max_f1": "Localization FDR",
     "loc_max_f1": "Localization F1",
+    "loc_average_precision": "Localization average precision",
 }
 
 long_df = reviewer_summary_df.melt(
@@ -196,9 +272,10 @@ long_df.to_csv(
 )
 
 # --------------------------------------------------
-# 8. Main reviewer-facing point plots
+# 9. Point plots
 # --------------------------------------------------
 def plot_point_metric(metric):
+
     sub = long_df[long_df["metric"] == metric].copy()
 
     plt.figure(figsize=(12, 5))
@@ -240,11 +317,12 @@ for metric in plot_metrics:
     plot_point_metric(metric)
 
 # --------------------------------------------------
-# 9. Scenario win counts
+# 10. Scenario win counts
 # --------------------------------------------------
 winner_rows = []
 
 for metric in plot_metrics:
+
     tmp = (
         reviewer_summary_df
         .groupby(["run", "decoder"])[metric]
@@ -253,10 +331,8 @@ for metric in plot_metrics:
     )
 
     if "fdr" in metric:
-        # Lower is better for FDR
         idx = tmp.groupby("run")[metric].idxmin()
     else:
-        # Higher is better otherwise
         idx = tmp.groupby("run")[metric].idxmax()
 
     winners = tmp.loc[idx, ["run", "decoder", metric]].copy()
