@@ -19,6 +19,10 @@ emitter_df = pd.read_csv(base_dir / "emitter_metrics.tsv.gz", sep="\t")
 # Remove old cosine decoder
 emitter_df = emitter_df[emitter_df["decoder"] != "cosine"].copy()
 
+emitter_df = emitter_df[
+    emitter_df["run"] != "scenario11"
+].copy()
+
 print("Decoders included:")
 print(sorted(emitter_df["decoder"].unique()))
 
