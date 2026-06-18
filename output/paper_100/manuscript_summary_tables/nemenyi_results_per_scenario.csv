@@ -1,0 +1,601 @@
+scenario,metric,metric_label,decoder1,decoder2,p_raw,p_bonf,significant_0.01
+scenario1,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,0.21912929531445202,1.0,False
+scenario1,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,3.621146715815371e-10,3.621146715815371e-09,True
+scenario1,exc_recall_at_max_f1,Exact recall,bardensr,nn,0.0,0.0,True
+scenario1,exc_recall_at_max_f1,Exact recall,bardensr,scaled,2.6181569034000596e-05,0.00026181569034000596,True
+scenario1,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario1,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario1,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.07145460045450847,0.7145460045450847,False
+scenario1,exc_recall_at_max_f1,Exact recall,deepcell,nn,6.154437372574151e-05,0.0006154437372574151,True
+scenario1,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario1,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,1.0362334779134841e-07,1.036233477913484e-06,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.0,0.0,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,3.2516472717070144e-05,0.00032516472717070144,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,8.341216606311264e-12,8.341216606311264e-11,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0,0.0,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.6074829453091497,1.0,False
+scenario1,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario1,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0,0.0,True
+scenario1,exc_max_f1,Exact F1,bardensr,cosine-np,0.0005460075954142329,0.005460075954142329,True
+scenario1,exc_max_f1,Exact F1,bardensr,deepcell,1.3056752462548005e-06,1.3056752462548005e-05,True
+scenario1,exc_max_f1,Exact F1,bardensr,nn,0.0,0.0,True
+scenario1,exc_max_f1,Exact F1,bardensr,scaled,3.0251801064196115e-11,3.0251801064196115e-10,True
+scenario1,exc_max_f1,Exact F1,cosine-np,deepcell,0.0,0.0,True
+scenario1,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario1,exc_max_f1,Exact F1,cosine-np,scaled,0.026248296899453294,0.26248296899453294,False
+scenario1,exc_max_f1,Exact F1,deepcell,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario1,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario1,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario1,max_r,Max Pearson r,bardensr,cosine-np,2.711805402455525e-08,2.711805402455525e-07,True
+scenario1,max_r,Max Pearson r,bardensr,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario1,max_r,Max Pearson r,bardensr,nn,9.322430945302163e-05,0.0009322430945302163,True
+scenario1,max_r,Max Pearson r,bardensr,scaled,1.138533711753098e-12,1.138533711753098e-11,True
+scenario1,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario1,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario1,max_r,Max Pearson r,cosine-np,scaled,0.5782832291030644,1.0,False
+scenario1,max_r,Max Pearson r,deepcell,nn,6.154437372574151e-05,0.0006154437372574151,True
+scenario1,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario1,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario1,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario1,max_rho,Max Spearman rho,bardensr,deepcell,0.0037652384292504726,0.037652384292504726,False
+scenario1,max_rho,Max Spearman rho,bardensr,nn,6.84096751346619e-06,6.84096751346619e-05,True
+scenario1,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario1,max_rho,Max Spearman rho,cosine-np,deepcell,3.621146715815371e-10,3.621146715815371e-09,True
+scenario1,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario1,max_rho,Max Spearman rho,cosine-np,scaled,0.8422218208672236,1.0,False
+scenario1,max_rho,Max Spearman rho,deepcell,nn,3.3306690738754696e-16,3.3306690738754696e-15,True
+scenario1,max_rho,Max Spearman rho,deepcell,scaled,2.0528023725319144e-13,2.0528023725319144e-12,True
+scenario1,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario1,exc_average_precision,Exact average precision,bardensr,cosine-np,6.84096751346619e-06,6.84096751346619e-05,True
+scenario1,exc_average_precision,Exact average precision,bardensr,deepcell,0.0,0.0,True
+scenario1,exc_average_precision,Exact average precision,bardensr,nn,6.84096751346619e-06,6.84096751346619e-05,True
+scenario1,exc_average_precision,Exact average precision,bardensr,scaled,3.0251801064196115e-11,3.0251801064196115e-10,True
+scenario1,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario1,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario1,exc_average_precision,Exact average precision,cosine-np,scaled,0.2598633006725092,1.0,False
+scenario1,exc_average_precision,Exact average precision,deepcell,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario1,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario1,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True
+scenario10,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,5.551115123125783e-16,5.551115123125783e-15,True
+scenario10,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,0.007123983965343084,0.07123983965343084,False
+scenario10,exc_recall_at_max_f1,Exact recall,bardensr,nn,6.84096751346619e-06,6.84096751346619e-05,True
+scenario10,exc_recall_at_max_f1,Exact recall,bardensr,scaled,0.0,0.0,True
+scenario10,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,4.3043649062823874e-06,4.3043649062823874e-05,True
+scenario10,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario10,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,7.582252306237436e-05,0.0007582252306237436,True
+scenario10,exc_recall_at_max_f1,Exact recall,deepcell,nn,9.992007221626409e-16,9.992007221626409e-15,True
+scenario10,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario10,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,0.0,0.0,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.004430474906465087,0.04430474906465087,False
+scenario10,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,4.440892098500626e-16,4.440892098500626e-15,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,0.0,0.0,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,2.116611304670002e-06,2.116611304670002e-05,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.019959884793145255,0.19959884793145255,False
+scenario10,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,6.84096751346619e-06,6.84096751346619e-05,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario10,exc_fdr_at_max_f1,Exact FDR,nn,scaled,1.887379141862766e-15,1.887379141862766e-14,True
+scenario10,exc_max_f1,Exact F1,bardensr,cosine-np,0.0,0.0,True
+scenario10,exc_max_f1,Exact F1,bardensr,deepcell,0.00014007037811680778,0.0014007037811680778,True
+scenario10,exc_max_f1,Exact F1,bardensr,nn,0.0022812826421959587,0.022812826421959587,False
+scenario10,exc_max_f1,Exact F1,bardensr,scaled,0.0,0.0,True
+scenario10,exc_max_f1,Exact F1,cosine-np,deepcell,1.3503781630119782e-05,0.00013503781630119782,True
+scenario10,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario10,exc_max_f1,Exact F1,cosine-np,scaled,7.582252306237436e-05,0.0007582252306237436,True
+scenario10,exc_max_f1,Exact F1,deepcell,nn,1.199040866595169e-14,1.199040866595169e-13,True
+scenario10,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario10,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario10,max_r,Max Pearson r,bardensr,cosine-np,0.0,0.0,True
+scenario10,max_r,Max Pearson r,bardensr,deepcell,0.9418726891147404,1.0,False
+scenario10,max_r,Max Pearson r,bardensr,nn,0.06357740413856561,0.6357740413856561,False
+scenario10,max_r,Max Pearson r,bardensr,scaled,0.0,0.0,True
+scenario10,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario10,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario10,max_r,Max Pearson r,cosine-np,scaled,0.9965022794939457,1.0,False
+scenario10,max_r,Max Pearson r,deepcell,nn,0.006094246753871491,0.060942467538714906,False
+scenario10,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario10,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario10,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario10,max_rho,Max Spearman rho,bardensr,deepcell,1.4486245536460274e-10,1.4486245536460274e-09,True
+scenario10,max_rho,Max Spearman rho,bardensr,nn,0.9999855541087774,1.0,False
+scenario10,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario10,max_rho,Max Spearman rho,cosine-np,deepcell,1.0632139613164782e-10,1.0632139613164782e-09,True
+scenario10,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario10,max_rho,Max Spearman rho,cosine-np,scaled,0.9997714362467712,1.0,False
+scenario10,max_rho,Max Spearman rho,deepcell,nn,2.6734270353045986e-10,2.6734270353045986e-09,True
+scenario10,max_rho,Max Spearman rho,deepcell,scaled,3.621146715815371e-10,3.621146715815371e-09,True
+scenario10,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario10,exc_average_precision,Exact average precision,bardensr,cosine-np,0.0,0.0,True
+scenario10,exc_average_precision,Exact average precision,bardensr,deepcell,1.199040866595169e-14,1.199040866595169e-13,True
+scenario10,exc_average_precision,Exact average precision,bardensr,nn,2.6869318789923824e-06,2.6869318789923824e-05,True
+scenario10,exc_average_precision,Exact average precision,bardensr,scaled,0.0,0.0,True
+scenario10,exc_average_precision,Exact average precision,cosine-np,deepcell,5.6936566572574066e-11,5.693656657257407e-10,True
+scenario10,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario10,exc_average_precision,Exact average precision,cosine-np,scaled,0.6650699904448976,1.0,False
+scenario10,exc_average_precision,Exact average precision,deepcell,nn,0.03419860923196871,0.34198609231968713,False
+scenario10,exc_average_precision,Exact average precision,deepcell,scaled,1.887379141862766e-15,1.887379141862766e-14,True
+scenario10,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True
+scenario2,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,2.1038630406144954e-05,0.00021038630406144954,True
+scenario2,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario2,exc_recall_at_max_f1,Exact recall,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario2,exc_recall_at_max_f1,Exact recall,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario2,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,0.0,0.0,True
+scenario2,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario2,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.0007905448819138794,0.007905448819138794,True
+scenario2,exc_recall_at_max_f1,Exact recall,deepcell,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario2,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario2,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,8.956917096902828e-09,8.956917096902828e-08,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.007123983965343084,0.07123983965343084,False
+scenario2,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,2.7755575615628914e-15,2.7755575615628914e-14,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,2.220446049250313e-16,2.220446049250313e-15,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0,0.0,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.11124624644314074,1.0,False
+scenario2,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,1.3503781630119782e-05,0.00013503781630119782,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario2,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0,0.0,True
+scenario2,exc_max_f1,Exact F1,bardensr,cosine-np,3.2516472717070144e-05,0.00032516472717070144,True
+scenario2,exc_max_f1,Exact F1,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario2,exc_max_f1,Exact F1,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario2,exc_max_f1,Exact F1,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario2,exc_max_f1,Exact F1,cosine-np,deepcell,0.0,0.0,True
+scenario2,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario2,exc_max_f1,Exact F1,cosine-np,scaled,0.0003739884145286254,0.003739884145286254,True
+scenario2,exc_max_f1,Exact F1,deepcell,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario2,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario2,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario2,max_r,Max Pearson r,bardensr,cosine-np,1.1951810652277572e-09,1.1951810652277572e-08,True
+scenario2,max_r,Max Pearson r,bardensr,deepcell,2.145926325525238e-09,2.145926325525238e-08,True
+scenario2,max_r,Max Pearson r,bardensr,nn,1.59476876149256e-11,1.5947687614925599e-10,True
+scenario2,max_r,Max Pearson r,bardensr,scaled,3.0251801064196115e-11,3.0251801064196115e-10,True
+scenario2,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario2,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario2,max_r,Max Pearson r,cosine-np,scaled,0.983548044598213,1.0,False
+scenario2,max_r,Max Pearson r,deepcell,nn,0.9530207470844513,1.0,False
+scenario2,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario2,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario2,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario2,max_rho,Max Spearman rho,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario2,max_rho,Max Spearman rho,bardensr,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario2,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario2,max_rho,Max Spearman rho,cosine-np,deepcell,6.75699529661955e-09,6.75699529661955e-08,True
+scenario2,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario2,max_rho,Max Spearman rho,cosine-np,scaled,0.8203316846733013,1.0,False
+scenario2,max_rho,Max Spearman rho,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario2,max_rho,Max Spearman rho,deepcell,scaled,4.328648550711023e-12,4.328648550711023e-11,True
+scenario2,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario2,exc_average_precision,Exact average precision,bardensr,cosine-np,4.852235742092148e-07,4.852235742092148e-06,True
+scenario2,exc_average_precision,Exact average precision,bardensr,deepcell,4.985416234992712e-05,0.0004985416234992712,True
+scenario2,exc_average_precision,Exact average precision,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario2,exc_average_precision,Exact average precision,bardensr,scaled,3.9968028886505635e-15,3.9968028886505635e-14,True
+scenario2,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario2,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario2,exc_average_precision,Exact average precision,cosine-np,scaled,0.05643168700253298,0.5643168700253298,False
+scenario2,exc_average_precision,Exact average precision,deepcell,nn,0.0005460075954142329,0.005460075954142329,True
+scenario2,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario2,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True
+scenario3,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,0.0,0.0,True
+scenario3,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,0.005201887475435152,0.05201887475435152,False
+scenario3,exc_recall_at_max_f1,Exact recall,bardensr,nn,0.08959872639542721,0.8959872639542721,False
+scenario3,exc_recall_at_max_f1,Exact recall,bardensr,scaled,0.0,0.0,True
+scenario3,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,0.0,0.0,True
+scenario3,exc_recall_at_max_f1,Exact recall,cosine-np,nn,6.604565783163707e-10,6.604565783163707e-09,True
+scenario3,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.0022812826421959587,0.022812826421959587,False
+scenario3,exc_recall_at_max_f1,Exact recall,deepcell,nn,2.711805402455525e-08,2.711805402455525e-07,True
+scenario3,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario3,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,0.0,0.0,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.9997714362467712,1.0,False
+scenario3,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,1.0632139613164782e-10,1.0632139613164782e-09,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,0.0,0.0,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,1.747299994692142e-07,1.747299994692142e-06,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.20043839644747152,1.0,False
+scenario3,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,3.621146715815371e-10,3.621146715815371e-09,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario3,exc_fdr_at_max_f1,Exact FDR,nn,scaled,7.172040739078511e-14,7.172040739078511e-13,True
+scenario3,exc_max_f1,Exact F1,bardensr,cosine-np,0.0,0.0,True
+scenario3,exc_max_f1,Exact F1,bardensr,deepcell,0.842221820867224,1.0,False
+scenario3,exc_max_f1,Exact F1,bardensr,nn,8.956917096902828e-09,8.956917096902828e-08,True
+scenario3,exc_max_f1,Exact F1,bardensr,scaled,0.0,0.0,True
+scenario3,exc_max_f1,Exact F1,cosine-np,deepcell,0.0,0.0,True
+scenario3,exc_max_f1,Exact F1,cosine-np,nn,2.1038630406144954e-05,0.00021038630406144954,True
+scenario3,exc_max_f1,Exact F1,cosine-np,scaled,0.0005460075954142329,0.005460075954142329,True
+scenario3,exc_max_f1,Exact F1,deepcell,nn,8.341216606311264e-12,8.341216606311264e-11,True
+scenario3,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario3,exc_max_f1,Exact F1,nn,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario3,max_r,Max Pearson r,bardensr,cosine-np,0.0,0.0,True
+scenario3,max_r,Max Pearson r,bardensr,deepcell,1.6030616833973e-09,1.6030616833973e-08,True
+scenario3,max_r,Max Pearson r,bardensr,nn,0.7205287109457077,1.0,False
+scenario3,max_r,Max Pearson r,bardensr,scaled,1.887379141862766e-15,1.887379141862766e-14,True
+scenario3,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario3,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario3,max_r,Max Pearson r,cosine-np,scaled,0.9291849837680282,1.0,False
+scenario3,max_r,Max Pearson r,deepcell,nn,2.6869318789923824e-06,2.6869318789923824e-05,True
+scenario3,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario3,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario3,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario3,max_rho,Max Spearman rho,bardensr,deepcell,5.551115123125783e-16,5.551115123125783e-15,True
+scenario3,max_rho,Max Spearman rho,bardensr,nn,0.006094246753871491,0.060942467538714906,False
+scenario3,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario3,max_rho,Max Spearman rho,cosine-np,deepcell,7.788114597673257e-11,7.788114597673257e-10,True
+scenario3,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario3,max_rho,Max Spearman rho,cosine-np,scaled,0.9988642140796474,1.0,False
+scenario3,max_rho,Max Spearman rho,deepcell,nn,5.431806182620846e-06,5.4318061826208464e-05,True
+scenario3,max_rho,Max Spearman rho,deepcell,scaled,4.89521201352261e-10,4.89521201352261e-09,True
+scenario3,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario3,exc_average_precision,Exact average precision,bardensr,cosine-np,0.0,0.0,True
+scenario3,exc_average_precision,Exact average precision,bardensr,deepcell,0.00017117024056945152,0.0017117024056945152,True
+scenario3,exc_average_precision,Exact average precision,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario3,exc_average_precision,Exact average precision,bardensr,scaled,0.0,0.0,True
+scenario3,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario3,exc_average_precision,Exact average precision,cosine-np,nn,1.6030616833973e-09,1.6030616833973e-08,True
+scenario3,exc_average_precision,Exact average precision,cosine-np,scaled,0.9709294963661996,1.0,False
+scenario3,exc_average_precision,Exact average precision,deepcell,nn,4.985416234992712e-05,0.0004985416234992712,True
+scenario3,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario3,exc_average_precision,Exact average precision,nn,scaled,2.1986190645861825e-11,2.1986190645861825e-10,True
+scenario4,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,0.0,0.0,True
+scenario4,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario4,exc_recall_at_max_f1,Exact recall,bardensr,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario4,exc_recall_at_max_f1,Exact recall,bardensr,scaled,0.0,0.0,True
+scenario4,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,0.0,0.0,True
+scenario4,exc_recall_at_max_f1,Exact recall,cosine-np,nn,2.1986190645861825e-11,2.1986190645861825e-10,True
+scenario4,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.9709294963661996,1.0,False
+scenario4,exc_recall_at_max_f1,Exact recall,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario4,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario4,exc_recall_at_max_f1,Exact recall,nn,scaled,1.6030616833973e-09,1.6030616833973e-08,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,0.0,0.0,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.011229146012976754,0.11229146012976754,False
+scenario4,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,5.540569523732053e-05,0.0005540569523732053,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,0.0,0.0,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,2.2622584849862903e-07,2.2622584849862903e-06,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.16640904770950993,1.0,False
+scenario4,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,8.559819519859957e-14,8.559819519859957e-13,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario4,exc_fdr_at_max_f1,Exact FDR,nn,scaled,5.029310301551959e-14,5.029310301551959e-13,True
+scenario4,exc_max_f1,Exact F1,bardensr,cosine-np,0.0,0.0,True
+scenario4,exc_max_f1,Exact F1,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario4,exc_max_f1,Exact F1,bardensr,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario4,exc_max_f1,Exact F1,bardensr,scaled,0.0,0.0,True
+scenario4,exc_max_f1,Exact F1,cosine-np,deepcell,0.0,0.0,True
+scenario4,exc_max_f1,Exact F1,cosine-np,nn,1.6030616833973e-09,1.6030616833973e-08,True
+scenario4,exc_max_f1,Exact F1,cosine-np,scaled,0.9709294963661996,1.0,False
+scenario4,exc_max_f1,Exact F1,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario4,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario4,exc_max_f1,Exact F1,nn,scaled,2.1986190645861825e-11,2.1986190645861825e-10,True
+scenario4,max_r,Max Pearson r,bardensr,cosine-np,1.1951810652277572e-09,1.1951810652277572e-08,True
+scenario4,max_r,Max Pearson r,bardensr,deepcell,8.341216606311264e-12,8.341216606311264e-11,True
+scenario4,max_r,Max Pearson r,bardensr,nn,0.8990782760559263,1.0,False
+scenario4,max_r,Max Pearson r,bardensr,scaled,0.0,0.0,True
+scenario4,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario4,max_r,Max Pearson r,cosine-np,nn,2.2286616996325392e-12,2.2286616996325392e-11,True
+scenario4,max_r,Max Pearson r,cosine-np,scaled,0.0003739884145286254,0.003739884145286254,True
+scenario4,max_r,Max Pearson r,deepcell,nn,3.822856919910578e-09,3.822856919910578e-08,True
+scenario4,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario4,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario4,max_rho,Max Spearman rho,bardensr,cosine-np,2.6734270353045986e-10,2.6734270353045986e-09,True
+scenario4,max_rho,Max Spearman rho,bardensr,deepcell,1.59476876149256e-11,1.5947687614925599e-10,True
+scenario4,max_rho,Max Spearman rho,bardensr,nn,0.9530207470844513,1.0,False
+scenario4,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario4,max_rho,Max Spearman rho,cosine-np,deepcell,0.0,0.0,True
+scenario4,max_rho,Max Spearman rho,cosine-np,nn,1.5943912856641873e-12,1.5943912856641873e-11,True
+scenario4,max_rho,Max Spearman rho,cosine-np,scaled,0.0011350556038962623,0.011350556038962623,False
+scenario4,max_rho,Max Spearman rho,deepcell,nn,2.145926325525238e-09,2.145926325525238e-08,True
+scenario4,max_rho,Max Spearman rho,deepcell,scaled,0.0,0.0,True
+scenario4,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario4,exc_average_precision,Exact average precision,bardensr,cosine-np,0.0,0.0,True
+scenario4,exc_average_precision,Exact average precision,bardensr,deepcell,0.01734552768043407,0.1734552768043407,False
+scenario4,exc_average_precision,Exact average precision,bardensr,nn,4.0303170892208584e-05,0.00040303170892208584,True
+scenario4,exc_average_precision,Exact average precision,bardensr,scaled,0.0,0.0,True
+scenario4,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario4,exc_average_precision,Exact average precision,cosine-np,nn,2.220446049250313e-16,2.220446049250313e-15,True
+scenario4,exc_average_precision,Exact average precision,cosine-np,scaled,0.0022812826421959587,0.022812826421959587,False
+scenario4,exc_average_precision,Exact average precision,deepcell,nn,1.4477308241112041e-13,1.4477308241112041e-12,True
+scenario4,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario4,exc_average_precision,Exact average precision,nn,scaled,1.0786342476643007e-05,0.00010786342476643007,True
+scenario5,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,0.0,0.0,True
+scenario5,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario5,exc_recall_at_max_f1,Exact recall,bardensr,nn,4.483628501128489e-05,0.00044836285011284893,True
+scenario5,exc_recall_at_max_f1,Exact recall,bardensr,scaled,0.0,0.0,True
+scenario5,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,0.0,0.0,True
+scenario5,exc_recall_at_max_f1,Exact recall,cosine-np,nn,1.8551927771781607e-09,1.8551927771781607e-08,True
+scenario5,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.9972786531372816,1.0,False
+scenario5,exc_recall_at_max_f1,Exact recall,deepcell,nn,0.0,0.0,True
+scenario5,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario5,exc_recall_at_max_f1,Exact recall,nn,scaled,1.9698742637075384e-10,1.9698742637075384e-09,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,0.0,0.0,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.3800246558927287,1.0,False
+scenario5,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,0.0,0.0,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,0.0,0.0,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0027017971465606028,0.027017971465606028,False
+scenario5,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.9835480445982125,1.0,False
+scenario5,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,1.4477308241112041e-13,1.4477308241112041e-12,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario5,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0003085604797681274,0.003085604797681274,True
+scenario5,exc_max_f1,Exact F1,bardensr,cosine-np,0.0,0.0,True
+scenario5,exc_max_f1,Exact F1,bardensr,deepcell,0.00011438767136717765,0.0011438767136717765,True
+scenario5,exc_max_f1,Exact F1,bardensr,nn,4.0303170892208584e-05,0.00040303170892208584,True
+scenario5,exc_max_f1,Exact F1,bardensr,scaled,0.0,0.0,True
+scenario5,exc_max_f1,Exact F1,cosine-np,deepcell,0.0,0.0,True
+scenario5,exc_max_f1,Exact F1,cosine-np,nn,6.75699529661955e-09,6.75699529661955e-08,True
+scenario5,exc_max_f1,Exact F1,cosine-np,scaled,0.9291849837680282,1.0,False
+scenario5,exc_max_f1,Exact F1,deepcell,nn,0.0,0.0,True
+scenario5,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario5,exc_max_f1,Exact F1,nn,scaled,3.0251801064196115e-11,3.0251801064196115e-10,True
+scenario5,max_r,Max Pearson r,bardensr,cosine-np,0.0,0.0,True
+scenario5,max_r,Max Pearson r,bardensr,deepcell,0.0003739884145286254,0.003739884145286254,True
+scenario5,max_r,Max Pearson r,bardensr,nn,0.0,0.0,True
+scenario5,max_r,Max Pearson r,bardensr,scaled,0.0,0.0,True
+scenario5,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario5,max_r,Max Pearson r,cosine-np,nn,9.322430945302163e-05,0.0009322430945302163,True
+scenario5,max_r,Max Pearson r,cosine-np,scaled,0.9999272078409251,1.0,False
+scenario5,max_r,Max Pearson r,deepcell,nn,8.956917096902828e-09,8.956917096902828e-08,True
+scenario5,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario5,max_r,Max Pearson r,nn,scaled,4.985416234992712e-05,0.0004985416234992712,True
+scenario5,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario5,max_rho,Max Spearman rho,bardensr,deepcell,0.011229146012976421,0.11229146012976421,False
+scenario5,max_rho,Max Spearman rho,bardensr,nn,0.0,0.0,True
+scenario5,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario5,max_rho,Max Spearman rho,cosine-np,deepcell,0.0,0.0,True
+scenario5,max_rho,Max Spearman rho,cosine-np,nn,0.0019220953766040383,0.019220953766040383,False
+scenario5,max_rho,Max Spearman rho,cosine-np,scaled,0.9994466367589038,1.0,False
+scenario5,max_rho,Max Spearman rho,deepcell,nn,2.1986190645861825e-11,2.1986190645861825e-10,True
+scenario5,max_rho,Max Spearman rho,deepcell,scaled,0.0,0.0,True
+scenario5,max_rho,Max Spearman rho,nn,scaled,0.0007905448819138794,0.007905448819138794,True
+scenario5,exc_average_precision,Exact average precision,bardensr,cosine-np,0.0,0.0,True
+scenario5,exc_average_precision,Exact average precision,bardensr,deepcell,0.8203316846733013,1.0,False
+scenario5,exc_average_precision,Exact average precision,bardensr,nn,5.88418203051333e-15,5.88418203051333e-14,True
+scenario5,exc_average_precision,Exact average precision,bardensr,scaled,0.0,0.0,True
+scenario5,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario5,exc_average_precision,Exact average precision,cosine-np,nn,0.007123983965343195,0.07123983965343195,False
+scenario5,exc_average_precision,Exact average precision,cosine-np,scaled,0.8816556887712117,1.0,False
+scenario5,exc_average_precision,Exact average precision,deepcell,nn,0.0,0.0,True
+scenario5,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario5,exc_average_precision,Exact average precision,nn,scaled,0.00017117024056945152,0.0017117024056945152,True
+scenario6,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,8.598602358689256e-06,8.598602358689256e-05,True
+scenario6,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,0.00017117024056945152,0.0017117024056945152,True
+scenario6,exc_recall_at_max_f1,Exact recall,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario6,exc_recall_at_max_f1,Exact recall,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario6,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,0.0,0.0,True
+scenario6,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario6,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.001616010187561523,0.01616010187561523,False
+scenario6,exc_recall_at_max_f1,Exact recall,deepcell,nn,4.985416234992712e-05,0.0004985416234992712,True
+scenario6,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario6,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,6.75699529661955e-09,6.75699529661955e-08,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.0022812826421959587,0.022812826421959587,False
+scenario6,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,2.220446049250313e-16,2.220446049250313e-15,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,8.326672684688674e-15,8.326672684688674e-14,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0,0.0,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.32903682463147477,1.0,False
+scenario6,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,1.0786342476643007e-05,0.00010786342476643007,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario6,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0,0.0,True
+scenario6,exc_max_f1,Exact F1,bardensr,cosine-np,3.2516472717070144e-05,0.00032516472717070144,True
+scenario6,exc_max_f1,Exact F1,bardensr,deepcell,0.00017117024056945152,0.0017117024056945152,True
+scenario6,exc_max_f1,Exact F1,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario6,exc_max_f1,Exact F1,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario6,exc_max_f1,Exact F1,cosine-np,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario6,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario6,exc_max_f1,Exact F1,cosine-np,scaled,0.00017117024056945152,0.0017117024056945152,True
+scenario6,exc_max_f1,Exact F1,deepcell,nn,4.985416234992712e-05,0.0004985416234992712,True
+scenario6,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario6,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario6,max_r,Max Pearson r,bardensr,cosine-np,1.1951810652277572e-09,1.1951810652277572e-08,True
+scenario6,max_r,Max Pearson r,bardensr,deepcell,2.116611304670002e-06,2.116611304670002e-05,True
+scenario6,max_r,Max Pearson r,bardensr,nn,4.0967229608668276e-13,4.096722960866828e-12,True
+scenario6,max_r,Max Pearson r,bardensr,scaled,1.138533711753098e-12,1.138533711753098e-11,True
+scenario6,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario6,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario6,max_r,Max Pearson r,cosine-np,scaled,0.8626866268229275,1.0,False
+scenario6,max_r,Max Pearson r,deepcell,nn,0.12349590702392721,1.0,False
+scenario6,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario6,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario6,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario6,max_rho,Max Spearman rho,bardensr,deepcell,0.00017117024056945152,0.0017117024056945152,True
+scenario6,max_rho,Max Spearman rho,bardensr,nn,4.985416234992712e-05,0.0004985416234992712,True
+scenario6,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario6,max_rho,Max Spearman rho,cosine-np,deepcell,8.893342728910625e-10,8.893342728910625e-09,True
+scenario6,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario6,max_rho,Max Spearman rho,cosine-np,scaled,0.9709294963661996,1.0,False
+scenario6,max_rho,Max Spearman rho,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario6,max_rho,Max Spearman rho,deepcell,scaled,1.1544876166169615e-11,1.1544876166169615e-10,True
+scenario6,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario6,exc_average_precision,Exact average precision,bardensr,cosine-np,1.0362334779134841e-07,1.036233477913484e-06,True
+scenario6,exc_average_precision,Exact average precision,bardensr,deepcell,2.2622584849862903e-07,2.2622584849862903e-06,True
+scenario6,exc_average_precision,Exact average precision,bardensr,nn,5.029310301551959e-14,5.029310301551959e-13,True
+scenario6,exc_average_precision,Exact average precision,bardensr,scaled,1.4477308241112041e-13,1.4477308241112041e-12,True
+scenario6,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario6,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario6,exc_average_precision,Exact average precision,cosine-np,scaled,0.2818764747878939,1.0,False
+scenario6,exc_average_precision,Exact average precision,deepcell,nn,0.16640904770950993,1.0,False
+scenario6,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario6,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True
+scenario7,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,2.6869318789923824e-06,2.6869318789923824e-05,True
+scenario7,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,0.006094246753871491,0.060942467538714906,False
+scenario7,exc_recall_at_max_f1,Exact recall,bardensr,nn,5.551115123125783e-16,5.551115123125783e-15,True
+scenario7,exc_recall_at_max_f1,Exact recall,bardensr,scaled,0.0,0.0,True
+scenario7,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,2.220446049250313e-16,2.220446049250313e-15,True
+scenario7,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario7,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.0002540549577619844,0.002540549577619844,True
+scenario7,exc_recall_at_max_f1,Exact recall,deepcell,nn,5.431806182620846e-06,5.4318061826208464e-05,True
+scenario7,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario7,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,4.154288024693642e-11,4.154288024693642e-10,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.16640904770950993,1.0,False
+scenario7,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,5.029310301551959e-14,5.029310301551959e-13,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0,0.0,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.3800246558927298,1.0,False
+scenario7,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,2.2622584849862903e-07,2.2622584849862903e-06,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario7,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0,0.0,True
+scenario7,exc_max_f1,Exact F1,bardensr,cosine-np,4.3043649062823874e-06,4.3043649062823874e-05,True
+scenario7,exc_max_f1,Exact F1,bardensr,deepcell,0.008309309428598977,0.08309309428598977,False
+scenario7,exc_max_f1,Exact F1,bardensr,nn,7.771561172376096e-16,7.771561172376096e-15,True
+scenario7,exc_max_f1,Exact F1,bardensr,scaled,0.0,0.0,True
+scenario7,exc_max_f1,Exact F1,cosine-np,deepcell,7.771561172376096e-16,7.771561172376096e-15,True
+scenario7,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario7,exc_max_f1,Exact F1,cosine-np,scaled,7.582252306237436e-05,0.0007582252306237436,True
+scenario7,exc_max_f1,Exact F1,deepcell,nn,4.3043649062823874e-06,4.3043649062823874e-05,True
+scenario7,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario7,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario7,max_r,Max Pearson r,bardensr,cosine-np,1.199040866595169e-14,1.199040866595169e-13,True
+scenario7,max_r,Max Pearson r,bardensr,deepcell,0.7726468802254576,1.0,False
+scenario7,max_r,Max Pearson r,bardensr,nn,8.341216606311264e-12,8.341216606311264e-11,True
+scenario7,max_r,Max Pearson r,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario7,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario7,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario7,max_r,Max Pearson r,cosine-np,scaled,0.9291849837680282,1.0,False
+scenario7,max_r,Max Pearson r,deepcell,nn,2.0618715179665514e-08,2.0618715179665514e-07,True
+scenario7,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario7,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario7,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario7,max_rho,Max Spearman rho,bardensr,deepcell,0.00011438767136717765,0.0011438767136717765,True
+scenario7,max_rho,Max Spearman rho,bardensr,nn,6.154437372574151e-05,0.0006154437372574151,True
+scenario7,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario7,max_rho,Max Spearman rho,cosine-np,deepcell,2.145926325525238e-09,2.145926325525238e-08,True
+scenario7,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario7,max_rho,Max Spearman rho,cosine-np,scaled,0.9291849837680282,1.0,False
+scenario7,max_rho,Max Spearman rho,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario7,max_rho,Max Spearman rho,deepcell,scaled,8.341216606311264e-12,8.341216606311264e-11,True
+scenario7,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario7,exc_average_precision,Exact average precision,bardensr,cosine-np,4.6633249817240596e-08,4.6633249817240596e-07,True
+scenario7,exc_average_precision,Exact average precision,bardensr,deepcell,0.0009482614510635257,0.009482614510635257,True
+scenario7,exc_average_precision,Exact average precision,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario7,exc_average_precision,Exact average precision,bardensr,scaled,2.7755575615628914e-15,2.7755575615628914e-14,True
+scenario7,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario7,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario7,exc_average_precision,Exact average precision,cosine-np,scaled,0.1367501834275765,1.0,False
+scenario7,exc_average_precision,Exact average precision,deepcell,nn,2.6181569034000596e-05,0.00026181569034000596,True
+scenario7,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario7,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True
+scenario8,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,4.985416234992712e-05,0.0004985416234992712,True
+scenario8,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,0.00011438767136717765,0.0011438767136717765,True
+scenario8,exc_recall_at_max_f1,Exact recall,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_recall_at_max_f1,Exact recall,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario8,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,0.00011438767136717765,0.0011438767136717765,True
+scenario8,exc_recall_at_max_f1,Exact recall,deepcell,nn,6.154437372574151e-05,0.0006154437372574151,True
+scenario8,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario8,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,1.564633378414726e-08,1.564633378414726e-07,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,0.0007905448819138794,0.007905448819138794,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,2.4646951146678475e-14,2.4646951146678475e-13,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,0.0,0.0,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0,0.0,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.32903682463147477,1.0,False
+scenario8,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,2.1038630406144954e-05,0.00021038630406144954,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,0.0,0.0,True
+scenario8,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0,0.0,True
+scenario8,exc_max_f1,Exact F1,bardensr,cosine-np,4.985416234992712e-05,0.0004985416234992712,True
+scenario8,exc_max_f1,Exact F1,bardensr,deepcell,0.00011438767136717765,0.0011438767136717765,True
+scenario8,exc_max_f1,Exact F1,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_max_f1,Exact F1,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_max_f1,Exact F1,cosine-np,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario8,exc_max_f1,Exact F1,cosine-np,scaled,0.00011438767136717765,0.0011438767136717765,True
+scenario8,exc_max_f1,Exact F1,deepcell,nn,6.154437372574151e-05,0.0006154437372574151,True
+scenario8,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario8,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario8,max_r,Max Pearson r,bardensr,cosine-np,2.2622584849862903e-07,2.2622584849862903e-06,True
+scenario8,max_r,Max Pearson r,bardensr,deepcell,3.559616845727476e-08,3.5596168457274757e-07,True
+scenario8,max_r,Max Pearson r,bardensr,nn,1.5943912856641873e-12,1.5943912856641873e-11,True
+scenario8,max_r,Max Pearson r,bardensr,scaled,2.4646951146678475e-14,2.4646951146678475e-13,True
+scenario8,max_r,Max Pearson r,cosine-np,deepcell,0.0,0.0,True
+scenario8,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario8,max_r,Max Pearson r,cosine-np,scaled,0.1367501834275765,1.0,False
+scenario8,max_r,Max Pearson r,deepcell,nn,0.5782832291030651,1.0,False
+scenario8,max_r,Max Pearson r,deepcell,scaled,0.0,0.0,True
+scenario8,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario8,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario8,max_rho,Max Spearman rho,bardensr,deepcell,0.0003739884145286254,0.003739884145286254,True
+scenario8,max_rho,Max Spearman rho,bardensr,nn,3.2516472717070144e-05,0.00032516472717070144,True
+scenario8,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario8,max_rho,Max Spearman rho,cosine-np,deepcell,6.097273341776344e-08,6.097273341776344e-07,True
+scenario8,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario8,max_rho,Max Spearman rho,cosine-np,scaled,0.20043839644747075,1.0,False
+scenario8,max_rho,Max Spearman rho,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,max_rho,Max Spearman rho,deepcell,scaled,1.7208456881689926e-14,1.7208456881689926e-13,True
+scenario8,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario8,exc_average_precision,Exact average precision,bardensr,cosine-np,4.852235742092148e-07,4.852235742092148e-06,True
+scenario8,exc_average_precision,Exact average precision,bardensr,deepcell,2.6181569034000596e-05,0.00026181569034000596,True
+scenario8,exc_average_precision,Exact average precision,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario8,exc_average_precision,Exact average precision,bardensr,scaled,1.7208456881689926e-14,1.7208456881689926e-13,True
+scenario8,exc_average_precision,Exact average precision,cosine-np,deepcell,0.0,0.0,True
+scenario8,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario8,exc_average_precision,Exact average precision,cosine-np,scaled,0.08959872639542654,0.8959872639542654,False
+scenario8,exc_average_precision,Exact average precision,deepcell,nn,0.0005460075954142329,0.005460075954142329,True
+scenario8,exc_average_precision,Exact average precision,deepcell,scaled,0.0,0.0,True
+scenario8,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True
+scenario9,exc_recall_at_max_f1,Exact recall,bardensr,cosine-np,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_recall_at_max_f1,Exact recall,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_recall_at_max_f1,Exact recall,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,exc_recall_at_max_f1,Exact recall,bardensr,scaled,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,exc_recall_at_max_f1,Exact recall,cosine-np,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,exc_recall_at_max_f1,Exact recall,cosine-np,nn,0.0,0.0,True
+scenario9,exc_recall_at_max_f1,Exact recall,cosine-np,scaled,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_recall_at_max_f1,Exact recall,deepcell,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_recall_at_max_f1,Exact recall,deepcell,scaled,0.0,0.0,True
+scenario9,exc_recall_at_max_f1,Exact recall,nn,scaled,0.0,0.0,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,bardensr,cosine-np,0.0,0.0,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,bardensr,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,bardensr,scaled,0.0,0.0,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,cosine-np,deepcell,2.6869318789923824e-06,2.6869318789923824e-05,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,cosine-np,nn,0.0,0.0,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,cosine-np,scaled,0.015039215190305044,0.15039215190305044,False
+scenario9,exc_fdr_at_max_f1,Exact FDR,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,deepcell,scaled,1.3322676295501878e-15,1.3322676295501878e-14,True
+scenario9,exc_fdr_at_max_f1,Exact FDR,nn,scaled,0.0,0.0,True
+scenario9,exc_max_f1,Exact F1,bardensr,cosine-np,3.2516472717070144e-05,0.00032516472717070144,True
+scenario9,exc_max_f1,Exact F1,bardensr,deepcell,0.0003739884145286254,0.003739884145286254,True
+scenario9,exc_max_f1,Exact F1,bardensr,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,exc_max_f1,Exact F1,bardensr,scaled,0.0,0.0,True
+scenario9,exc_max_f1,Exact F1,cosine-np,deepcell,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,exc_max_f1,Exact F1,cosine-np,nn,0.0,0.0,True
+scenario9,exc_max_f1,Exact F1,cosine-np,scaled,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_max_f1,Exact F1,deepcell,nn,3.2516472717070144e-05,0.00032516472717070144,True
+scenario9,exc_max_f1,Exact F1,deepcell,scaled,0.0,0.0,True
+scenario9,exc_max_f1,Exact F1,nn,scaled,0.0,0.0,True
+scenario9,max_r,Max Pearson r,bardensr,cosine-np,0.0,0.0,True
+scenario9,max_r,Max Pearson r,bardensr,deepcell,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,max_r,Max Pearson r,bardensr,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,max_r,Max Pearson r,bardensr,scaled,0.0,0.0,True
+scenario9,max_r,Max Pearson r,cosine-np,deepcell,1.664052589167575e-06,1.664052589167575e-05,True
+scenario9,max_r,Max Pearson r,cosine-np,nn,0.0,0.0,True
+scenario9,max_r,Max Pearson r,cosine-np,scaled,0.026248296899453294,0.26248296899453294,False
+scenario9,max_r,Max Pearson r,deepcell,nn,1.1102230246251565e-16,1.1102230246251565e-15,True
+scenario9,max_r,Max Pearson r,deepcell,scaled,2.7755575615628914e-15,2.7755575615628914e-14,True
+scenario9,max_r,Max Pearson r,nn,scaled,0.0,0.0,True
+scenario9,max_rho,Max Spearman rho,bardensr,cosine-np,0.0,0.0,True
+scenario9,max_rho,Max Spearman rho,bardensr,deepcell,0.008309309428598977,0.08309309428598977,False
+scenario9,max_rho,Max Spearman rho,bardensr,nn,4.3043649062823874e-06,4.3043649062823874e-05,True
+scenario9,max_rho,Max Spearman rho,bardensr,scaled,0.0,0.0,True
+scenario9,max_rho,Max Spearman rho,cosine-np,deepcell,8.956917096902828e-09,8.956917096902828e-08,True
+scenario9,max_rho,Max Spearman rho,cosine-np,nn,0.0,0.0,True
+scenario9,max_rho,Max Spearman rho,cosine-np,scaled,0.1367501834275765,1.0,False
+scenario9,max_rho,Max Spearman rho,deepcell,nn,7.771561172376096e-16,7.771561172376096e-15,True
+scenario9,max_rho,Max Spearman rho,deepcell,scaled,4.440892098500626e-16,4.440892098500626e-15,True
+scenario9,max_rho,Max Spearman rho,nn,scaled,0.0,0.0,True
+scenario9,exc_average_precision,Exact average precision,bardensr,cosine-np,0.0,0.0,True
+scenario9,exc_average_precision,Exact average precision,bardensr,deepcell,6.154437372574151e-05,0.0006154437372574151,True
+scenario9,exc_average_precision,Exact average precision,bardensr,nn,7.582252306237436e-05,0.0007582252306237436,True
+scenario9,exc_average_precision,Exact average precision,bardensr,scaled,0.0,0.0,True
+scenario9,exc_average_precision,Exact average precision,cosine-np,deepcell,8.598602358689256e-06,8.598602358689256e-05,True
+scenario9,exc_average_precision,Exact average precision,cosine-np,nn,0.0,0.0,True
+scenario9,exc_average_precision,Exact average precision,cosine-np,scaled,0.005201887475435152,0.05201887475435152,False
+scenario9,exc_average_precision,Exact average precision,deepcell,nn,0.0,0.0,True
+scenario9,exc_average_precision,Exact average precision,deepcell,scaled,7.771561172376096e-16,7.771561172376096e-15,True
+scenario9,exc_average_precision,Exact average precision,nn,scaled,0.0,0.0,True

@@ -3,19 +3,17 @@ import pandas as pd
 from scipy.stats import friedmanchisquare
 import scikit_posthocs as sp
 import numpy as np
-import matplotlib.pyplot as plt
+
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
 RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
-
 ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
 
 OUTDIR = os.path.join(
     ANALYSIS_DIR,
     "manuscript_summary_tables"
 )
-
 os.makedirs(OUTDIR, exist_ok=True)
 
 # --------------------------------------------------
@@ -59,7 +57,6 @@ max_r_df = bulk_df.loc[
     idx_r,
     ["run", "replicate", "decoder", "r"]
 ].copy()
-
 max_r_df = max_r_df.rename(columns={"r": "max_r"})
 
 # --------------------------------------------------
@@ -76,7 +73,6 @@ max_rho_df = bulk_df.loc[
     idx_rho,
     ["run", "replicate", "decoder", "rho"]
 ].copy()
-
 max_rho_df = max_rho_df.rename(columns={"rho": "max_rho"})
 
 # --------------------------------------------------
@@ -134,122 +130,117 @@ if missing:
 # --------------------------------------------------
 ALPHA = 0.01
 N_TESTED_METRICS = len(metrics)
-BONF_ALPHA = ALPHA / N_TESTED_METRICS
 
 print(f"Family-wise alpha = {ALPHA}")
 print(f"Number of tested metrics = {N_TESTED_METRICS}")
-print(f"Bonferroni threshold = {BONF_ALPHA}")
 
 friedman_results = []
 nemenyi_results = []
 
-for metric in metrics:
+# Get the list of unique scenarios (S1 through S10)
+scenarios = sorted(df["run"].unique())
 
-    tmp = df[
-        ["run", "replicate", "decoder", metric]
-    ].dropna().copy()
+# --------------------------------------------------
+# Outer Loop: Run tests completely isolated by Scenario
+# --------------------------------------------------
+for scenario in scenarios:
+    print("\n" + "#" * 80)
+    print(f" PROCESSING SCENARIO: {scenario} ")
+    print("#" * 80)
+    
+    scenario_df = df[df["run"] == scenario].copy()
 
-    # Block = scenario × replicate
-    tmp["block"] = (
-        tmp["run"].astype(str)
-        + "_"
-        + tmp["replicate"].astype(str)
-    )
+    for metric in metrics:
+        tmp = scenario_df[
+            ["replicate", "decoder", metric]
+        ].dropna().copy()
 
-    wide = tmp.pivot(
-        index="block",
-        columns="decoder",
-        values=metric,
-    ).dropna()
+        # Legitimate Block = individual replicate within this specific scenario
+        tmp["block"] = tmp["replicate"].astype(str)
 
-    stat, p_raw = friedmanchisquare(
-        *[wide[col] for col in wide.columns]
-    )
+        # Pivot to make rows = 100 replicates, columns = decoders
+        wide = tmp.pivot(
+            index="block",
+            columns="decoder",
+            values=metric,
+        ).dropna()
+        
+        # Guard check to ensure we have data to test
+        if wide.shape[0] < 3:
+            print(f"Skipping {metric} for {scenario}: insufficient data count.")
+            continue
 
-    p_bonf = min(p_raw * N_TESTED_METRICS, 1.0)
-    significant = p_bonf < ALPHA
-
-    friedman_results.append({
-        "metric": metric,
-        "metric_label": metric_labels[metric],
-        "n_blocks": wide.shape[0],
-        "n_decoders": wide.shape[1],
-        "friedman_statistic": stat,
-        "p_raw": p_raw,
-        "p_bonf": p_bonf,
-        "significant_0.01": significant,
-    })
-
-    print("\n")
-    print("=" * 80)
-    print(metric_labels[metric])
-    print(f"Friedman statistic = {stat:.4f}")
-    print(f"Raw p = {p_raw:.3e}")
-    print(f"Bonferroni p = {p_bonf:.3e}")
-
-    if significant:
-
-        nem = sp.posthoc_nemenyi_friedman(wide)
-
-        decoders = list(nem.columns)
-
-        n_pairs = (
-            len(decoders)
-            * (len(decoders) - 1)
-            / 2
+        # --------------------------------------------------
+        # Execute Friedman Test per Scenario-Metric combination
+        # --------------------------------------------------
+        stat, p_raw = friedmanchisquare(
+            *[wide[col] for col in wide.columns]
         )
 
-        for i in range(len(decoders)):
-            for j in range(i + 1, len(decoders)):
+        # Bonferroni adjustment tracks metric families within this scenario
+        p_bonf = min(p_raw * N_TESTED_METRICS, 1.0)
+        significant = p_bonf < ALPHA
 
-                d1 = decoders[i]
-                d2 = decoders[j]
+        friedman_results.append({
+            "scenario": scenario,
+            "metric": metric,
+            "metric_label": metric_labels[metric],
+            "n_blocks": wide.shape[0], # Will correctly be up to 100
+            "n_decoders": wide.shape[1],
+            "friedman_statistic": stat,
+            "p_raw": p_raw,
+            "p_bonf": p_bonf,
+            "significant_0.01": significant,
+        })
 
-                p_nem_raw = nem.loc[d1, d2]
-                p_nem_bonf = min(p_nem_raw * n_pairs, 1.0)
+        print(f"\n{metric_labels[metric]} in {scenario}:")
+        print(f"  Friedman statistic = {stat:.4f} (Blocks/Reps = {wide.shape[0]})")
+        print(f"  Raw p = {p_raw:.3e} | Bonferroni p = {p_bonf:.3e}")
 
-                nemenyi_results.append({
-                    "metric": metric,
-                    "metric_label": metric_labels[metric],
-                    "decoder1": d1,
-                    "decoder2": d2,
-                    "p_raw": p_nem_raw,
-                    "p_bonf": p_nem_bonf,
-                    "significant_0.01": p_nem_bonf < ALPHA,
-                })
+        # --------------------------------------------------
+        # Post-hoc Nemenyi Test (Self-contained)
+        # --------------------------------------------------
+        if significant:
+            nem = sp.posthoc_nemenyi_friedman(wide)
+            decoders = list(nem.columns)
+            n_pairs = len(decoders) * (len(decoders) - 1) / 2
 
+            for i in range(len(decoders)):
+                for j in range(i + 1, len(decoders)):
+                    d1 = decoders[i]
+                    d2 = decoders[j]
+
+                    p_nem_raw = nem.loc[d1, d2]
+                    p_nem_bonf = min(p_nem_raw * n_pairs, 1.0)
+
+                    # Save result if it clears our adjusted alpha threshold
+                    nemenyi_results.append({
+                        "scenario": scenario,
+                        "metric": metric,
+                        "metric_label": metric_labels[metric],
+                        "decoder1": d1,
+                        "decoder2": d2,
+                        "p_raw": p_nem_raw,
+                        "p_bonf": p_nem_bonf,
+                        "significant_0.01": p_nem_bonf < ALPHA,
+                    })
+
+# --------------------------------------------------
+# Export Results
+# --------------------------------------------------
 friedman_df = pd.DataFrame(friedman_results)
 nemenyi_df = pd.DataFrame(nemenyi_results)
 
 friedman_df.to_csv(
-    os.path.join(
-        OUTDIR,
-        "friedman_results_six_metrics.csv",
-    ),
+    os.path.join(OUTDIR, "friedman_results_per_scenario.csv"),
     index=False,
 )
 
 nemenyi_df.to_csv(
-    os.path.join(
-        OUTDIR,
-        "nemenyi_results_six_metrics.csv",
-    ),
+    os.path.join(OUTDIR, "nemenyi_results_per_scenario.csv"),
     index=False,
 )
 
-print("\n")
+print("\n" + "=" * 80)
+print("COMPLETED: Results exported successfully to summary files.")
 print("=" * 80)
-print("FRIEDMAN RESULTS")
-print("=" * 80)
-print(friedman_df)
-
-print("\n")
-print("=" * 80)
-print("SIGNIFICANT NEMENYI COMPARISONS")
-print("=" * 80)
-
-if len(nemenyi_df) > 0:
-    print(nemenyi_df[nemenyi_df["significant_0.01"]])
-else:
-    print("No significant Friedman tests; no Nemenyi tests performed.")
-    
