@@ -88,7 +88,7 @@ panel_titles = {
 decoder_labels = {
     "cosine_np": "Cosine",
     "cosine-np": "Cosine",
-    "scaled": "MERlin-scaled",
+    "scaled": "MERlin",
     "nn": "Nearest neighbor",
     "bardensr": "BARDENSR",
     "deepcell": "DeepCell-Spots",

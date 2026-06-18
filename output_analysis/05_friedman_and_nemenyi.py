@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from scipy.stats import friedmanchisquare
 import scikit_posthocs as sp
-
+import numpy as np
+import matplotlib.pyplot as plt
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
@@ -251,3 +252,4 @@ if len(nemenyi_df) > 0:
     print(nemenyi_df[nemenyi_df["significant_0.01"]])
 else:
     print("No significant Friedman tests; no Nemenyi tests performed.")
+    

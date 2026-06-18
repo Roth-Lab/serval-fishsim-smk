@@ -183,7 +183,7 @@ paper_table = pd.DataFrame(rows)
 
 decoder_order = [
     "Cosine",
-    "MERlin-scaled",
+    "MERlin",
     "BARDENSR",
     "Nearest neighbor",
     "DeepCell-Spots",
