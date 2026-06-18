@@ -6,15 +6,17 @@ import seaborn as sns
 from pathlib import Path
 from sklearn.metrics import auc
 
-OUTDIR = r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new\reviewer_transcript_level_metrics"
+OUTDIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100/reviewer_transcript_level_metrics"
 os.makedirs(OUTDIR, exist_ok=True)
 
 # --------------------------------------------------
 # 1. Load data / clean decoder names
 # --------------------------------------------------
-base_dir = Path(r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new")
+base_dir = Path(r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100")
 
+print("STARTING READ")
 emitter_df = pd.read_csv(base_dir / "emitter_metrics.tsv.gz", sep="\t")
+print("FINISHED READ")
 
 # Remove old cosine decoder
 emitter_df = emitter_df[emitter_df["decoder"] != "cosine"].copy()
@@ -29,8 +31,11 @@ print(sorted(emitter_df["decoder"].unique()))
 # --------------------------------------------------
 # 2. Safe division helper
 # --------------------------------------------------
-def safe_divide(num, den):
-    return np.where(den > 0, num / den, np.nan)
+def safe_divide(num, den, fill_value=0.0):
+    result = np.full(len(den), fill_value, dtype=float)
+    mask = den > 0
+    result[mask] = num[mask] / den[mask]
+    return result
 
 # --------------------------------------------------
 # 3. Recompute precision, recall, FDR, F1 from TP/FP/FN
@@ -41,17 +46,23 @@ for mode in ["exc", "loc"]:
     fp = emitter_df[f"{mode}_fp"]
     fn = emitter_df[f"{mode}_fn"]
 
-    emitter_df[f"{mode}_precision_calc"] = safe_divide(tp, tp + fp)
-    emitter_df[f"{mode}_recall_calc"] = safe_divide(tp, tp + fn)
-    emitter_df[f"{mode}_fdr_calc"] = safe_divide(fp, tp + fp)
+    precision = safe_divide(tp, tp + fp, fill_value=0.0)
+    recall = safe_divide(tp, tp + fn, fill_value=0.0)
+    fdr = safe_divide(fp, tp + fp, fill_value=0.0)
 
-    emitter_df[f"{mode}_f1_calc"] = safe_divide(
-        2
-        * emitter_df[f"{mode}_precision_calc"]
-        * emitter_df[f"{mode}_recall_calc"],
-        emitter_df[f"{mode}_precision_calc"]
-        + emitter_df[f"{mode}_recall_calc"],
-    )
+    emitter_df[f"{mode}_precision_calc"] = precision
+    emitter_df[f"{mode}_recall_calc"] = recall
+    emitter_df[f"{mode}_fdr_calc"] = fdr
+
+    f1_num = 2 * precision * recall
+    f1_den = precision + recall
+
+    f1 = np.zeros(len(f1_den), dtype=float)
+
+    mask = f1_den > 0
+    f1[mask] = f1_num[mask] / f1_den[mask]
+
+    emitter_df[f"{mode}_f1_calc"] = f1
 
 # --------------------------------------------------
 # 4. Compute average precision from threshold sweep
