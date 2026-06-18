@@ -6,9 +6,15 @@ import scikit_posthocs as sp
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
-INDIR = r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new"
+RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
 
-OUTDIR = os.path.join(INDIR, "manuscript_summary_tables")
+ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
+
+OUTDIR = os.path.join(
+    ANALYSIS_DIR,
+    "manuscript_summary_tables"
+)
+
 os.makedirs(OUTDIR, exist_ok=True)
 
 # --------------------------------------------------
@@ -16,14 +22,14 @@ os.makedirs(OUTDIR, exist_ok=True)
 # --------------------------------------------------
 reviewer_summary_df = pd.read_csv(
     os.path.join(
-        INDIR,
+        ANALYSIS_DIR,
         "reviewer_transcript_level_metrics",
         "reviewer_transcript_level_summary_by_replicate.csv",
     )
 )
 
 bulk_df = pd.read_csv(
-    os.path.join(INDIR, "bulk_metrics.tsv.gz"),
+    os.path.join(RESULTS_DIR, "bulk_metrics.tsv.gz"),
     sep="\t",
 )
 

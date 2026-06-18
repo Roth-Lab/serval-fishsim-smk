@@ -4,17 +4,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-INDIR = r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new"
-reviewer_summary_df = pd.read_csv(os.path.join(INDIR, "reviewer_transcript_level_metrics", "reviewer_transcript_level_summary_by_replicate.csv"))
+# --------------------------------------------------
+# Paths
+# --------------------------------------------------
+RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
 
-bulk_df = pd.read_csv(os.path.join(INDIR, "bulk_metrics.tsv.gz"), sep="\t")
+ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
 
-OUTDIR = r"C:\Users\jenkints\Documents\GitHub\serval-fishsim-smk\output\paper_new/figure2_synthetic_main"
+OUTDIR = r"{ANALYSIS_DIR}/figure2_synthetic_main"
 os.makedirs(OUTDIR, exist_ok=True)
 
-# Assumes you already have:
-# reviewer_summary_df
-# bulk_df
+# --------------------------------------------------
+# Load data
+# --------------------------------------------------
+reviewer_summary_df = pd.read_csv(os.path.join(ANALYSIS_DIR, "reviewer_transcript_level_metrics", "reviewer_transcript_level_summary_by_replicate.csv"))
+
+bulk_df = pd.read_csv(os.path.join(RESULTS_DIR, "bulk_metrics.tsv.gz"), sep="\t")
 
 # --------------------------------------------------
 # Clean decoders
