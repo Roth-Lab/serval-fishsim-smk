@@ -11,7 +11,7 @@ RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/p
 
 ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
 
-OUTDIR = r"{ANALYSIS_DIR}/figure2_synthetic_main"
+OUTDIR = rf"{ANALYSIS_DIR}/figure2_synthetic_main"
 os.makedirs(OUTDIR, exist_ok=True)
 
 # --------------------------------------------------
@@ -104,6 +104,9 @@ decoder_palette = {
 }
 
 fig_df["decoder_label"] = fig_df["decoder"].map(decoder_labels).fillna(fig_df["decoder"])
+
+# Force any leftover 'MERlin-scaled' to 'MERlin'
+fig_df["decoder_label"] = fig_df["decoder_label"].replace("MERlin-scaled", "MERlin")
 
 # Optional: force scenario order if run names are scenario1, scenario2, ...
 def scenario_sort_key(x):

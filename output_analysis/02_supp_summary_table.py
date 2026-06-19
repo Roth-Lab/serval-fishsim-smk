@@ -100,7 +100,7 @@ df_primary = df[df["run"] != "scenario11"].copy()
 decoder_labels = {
     "cosine-np": "Cosine",
     "cosine_np": "Cosine",
-    "scaled": "MERlin-scaled",
+    "scaled": "MERlin",
     "nn": "Nearest neighbor",
     "bardensr": "BarDensr",
     "deepcell-spots": "DeepCell-Spots",

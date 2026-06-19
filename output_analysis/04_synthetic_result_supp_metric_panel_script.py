@@ -102,6 +102,9 @@ fig_df["decoder_label"] = (
     .fillna(fig_df["decoder"].astype(str))
 )
 
+# Force any leftover 'MERlin-scaled' to 'MERlin'
+fig_df["decoder_label"] = fig_df["decoder_label"].replace("MERlin-scaled", "MERlin")
+
 # --------------------------------------------------
 # Scenario order
 # --------------------------------------------------
