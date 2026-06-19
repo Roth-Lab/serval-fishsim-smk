@@ -102,7 +102,7 @@ decoder_labels = {
     "cosine_np": "Cosine",
     "scaled": "MERlin-scaled",
     "nn": "Nearest neighbor",
-    "bardensr": "BARDENSR",
+    "bardensr": "BarDensr",
     "deepcell-spots": "DeepCell-Spots",
     "deepcell": "DeepCell-Spots",
 }
@@ -184,7 +184,7 @@ paper_table = pd.DataFrame(rows)
 decoder_order = [
     "Cosine",
     "MERlin",
-    "BARDENSR",
+    "BarDensr",
     "Nearest neighbor",
     "DeepCell-Spots",
 ]

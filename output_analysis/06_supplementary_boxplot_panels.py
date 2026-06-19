@@ -100,7 +100,7 @@ decoder_labels = {
     "cosine-np": "Cosine",
     "scaled": "MERlin",
     "nn": "Nearest neighbor",
-    "bardensr": "BARDENSR",
+    "bardensr": "BarDensr",
     "deepcell": "DeepCell-Spots",
     "deepcell-spots": "DeepCell-Spots",
 }
@@ -116,7 +116,7 @@ df["decoder_label"] = (
 decoder_order = [
     "Cosine",
     "MERlin",
-    "BARDENSR",
+    "BarDensr",
     "Nearest neighbor",
     "DeepCell-Spots",
 ]
@@ -130,12 +130,13 @@ decoder_order = [
 # mapping so the boxplots are colour-consistent with the main figure.
 # NOTE: if your main figure was generated with a custom palette rather than
 # tab10, replace these hex codes with the ones used there.
+# Updated color mapping to match your specified scheme
 decoder_palette = {
-    "BARDENSR":         "#1f77b4",  # blue
-    "Cosine":           "#ff7f0e",  # orange
-    "DeepCell-Spots":   "#2ca02c",  # green
-    "Nearest neighbor": "#d62728",  # red
-    "MERlin":           "#9467bd",  # purple  (= "MERlin-scaled" in the main fig)
+    "BarDensr":         "#d62728",  # Red
+    "Cosine":           "#2ca02c",  # Green
+    "DeepCell-Spots":   "#9467bd",  # Purple
+    "MERlin":           "#1f77b4",  # Blue
+    "Nearest neighbor": "#ff7f0e",  # Orange
 }
 
 # --------------------------------------------------

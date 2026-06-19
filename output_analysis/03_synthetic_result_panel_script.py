@@ -90,9 +90,17 @@ decoder_labels = {
     "cosine-np": "Cosine",
     "scaled": "MERlin",
     "nn": "Nearest neighbor",
-    "bardensr": "BARDENSR",
+    "bardensr": "BarDensr",
     "deepcell": "DeepCell-Spots",
     "deepcell-spots": "DeepCell-Spots",
+}
+
+decoder_palette = {
+    "BarDensr":         "#d62728",  # Red
+    "Cosine":           "#2ca02c",  # Green
+    "DeepCell-Spots":   "#9467bd",  # Purple
+    "MERlin":           "#1f77b4",  # Blue
+    "Nearest neighbor": "#ff7f0e",  # Orange
 }
 
 fig_df["decoder_label"] = fig_df["decoder"].map(decoder_labels).fillna(fig_df["decoder"])
@@ -139,6 +147,7 @@ for i, (ax, metric) in enumerate(zip(axes, plot_metrics)):
         y=metric,
         hue="decoder_label",
         order=run_order,
+        palette=decoder_palette,
         errorbar="se",
         dodge=0.15,
         markers="o",
