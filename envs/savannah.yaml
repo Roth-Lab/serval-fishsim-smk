@@ -1,0 +1,16 @@
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.7
+  - click
+  - h5py>=3
+  - numba
+  - numba-scipy>=0.3
+  - numpy
+  - pandas
+  - pytables
+  - scikit-image
+  - scipy
+  - pip
+  - pip:
+      - savannah @ git+ssh://git@github.com/Roth-Lab/savannah.git@84891cc

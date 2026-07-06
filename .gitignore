@@ -5,3 +5,7 @@
 *.gz
 *.tif
 *.zip
+*.csv
+*.pdf
+*.tsv
+*.txt

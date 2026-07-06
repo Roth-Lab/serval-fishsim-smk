@@ -38,8 +38,13 @@ class ConfigManager(object):
 
     # Params
     @property
-    def bardensr_threads(self):
-        return self.config["bardensr"]["num_threads"]
+    def deepcell_threads(self):
+        return self.config["deepcell"]["num_threads"]
+    
+    # Params
+    @property
+    def savannah_threads(self):
+        return self.config["savannah"]["num_threads"]
 
     @property
     def deepcell_threads(self):
@@ -47,8 +52,8 @@ class ConfigManager(object):
 
     @property
     def decoders(self):
-#        return ["bardensr", "deepcell", "jsit", "cosine", "cosine-np", "nn", "scaled"]
-        return ["bardensr", "deepcell", "cosine", "cosine-np", "nn", "scaled"]
+        # return ["bardensr", "deepcell", "jsit", "cosine", "cosine-np", "nn", "scaled"]
+        return ["bardensr", "deepcell", "cosine", "cosine-np", "nn", "scaled", "savannah"]
 
     @property
     def jsit_patch_size(self):

@@ -34,6 +34,21 @@ rule serval_codebook:
         "python scripts/convert_codebook_to_serval_codebook.py -c {input.c} -d {input.d} -o {output}"
 
 
+rule run_savannah:
+    input:
+        c=config.codebook_file,
+        i=config.sim_img_template,
+    output:
+        config.spots_template,
+    wildcard_constraints:
+        decoder="savannah",
+    threads: config.savannah_threads
+    conda:
+        "envs/savannah.yaml"
+    shell:
+        "python scripts/run_savannah.py -c {input.c} -i {input.i} -o {output} -t {threads}"
+        
+
 rule run_bardensr:
     input:
         c=config.codebook_file,

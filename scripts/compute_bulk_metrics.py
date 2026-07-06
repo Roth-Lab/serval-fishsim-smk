@@ -18,13 +18,16 @@ def main(args):
     elif args.decoder == "jsit":
         scores = ["mean_intensity"]
 
+    elif args.decoder == "savannah":
+        scores = ["dist_min", "dist_mean", "prob_max", "prob_mean"]
+
     else:
         scores = ["mean_distance", "min_distance", "mean_intensity", "max_intensity"]
 
     out_df = []
 
     for s in scores:
-        if s in ["evidence", "max_intensity", "mean_intensity", "probability"]:
+        if s in ["evidence", "max_intensity", "mean_intensity", "probability", "prob_max", "prob_mean"]:
             score_is_pos = True
 
         else:

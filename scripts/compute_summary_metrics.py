@@ -16,6 +16,9 @@ def main(args):
     if decoder in ["cosine", "nn", "scaled"]:
         df_bulk = df_bulk[df_bulk["score"] == "mean_distance"]
 
+    elif decoder == "savannah":
+        df_bulk = df_bulk[df_bulk["score"] == "prob_mean"]
+
     metrics["run"] = df_bulk.iloc[0]["run"]
 
     metrics["replicate"] = df_bulk.iloc[0]["replicate"]
@@ -46,6 +49,9 @@ def main(args):
 
     if decoder in ["cosine", "nn", "scaled"]:
         df_emitter = df_emitter[df_emitter["score"] == "mean_distance"]
+
+    elif decoder == "savannah":
+        df_emitter = df_emitter[df_emitter["score"] == "prob_mean"]
 
     for prefix in ["exc", "loc"]:
         precision = df_emitter[f"{prefix}_precision"]
