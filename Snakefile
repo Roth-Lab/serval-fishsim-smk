@@ -1,21 +1,21 @@
 from utils import ConfigManager
 
-config = ConfigManager(config)
+cfg = ConfigManager(config)
 
 
 rule all:
     input:
-        config.pipeline_files,
+        cfg.pipeline_files,
 
 
 rule simulate_data:
     input:
-        b=config.codebook_file,
-        c=config.run_config_template,
-        d=config.data_org_file,
+        b=cfg.codebook_file,
+        c=cfg.run_config_template,
+        d=cfg.data_org_file,
     output:
-        e=config.sim_emitter_template,
-        i=config.sim_img_template,
+        e=cfg.sim_emitter_template,
+        i=cfg.sim_img_template,
     conda:
         "envs/fishsim.yaml"
     shell:
@@ -24,10 +24,10 @@ rule simulate_data:
 
 rule serval_codebook:
     input:
-        c=config.codebook_file,
-        d=config.data_org_file,
+        c=cfg.codebook_file,
+        d=cfg.data_org_file,
     output:
-        config.serval_codebook_file,
+        cfg.serval_codebook_file,
     conda:
         "envs/python.yaml"
     shell:
@@ -36,13 +36,13 @@ rule serval_codebook:
 
 rule run_savannah:
     input:
-        c=config.codebook_file,
-        i=config.sim_img_template,
+        c=cfg.codebook_file,
+        i=cfg.sim_img_template,
     output:
-        config.spots_template,
+        cfg.spots_template,
     wildcard_constraints:
         decoder="savannah",
-    threads: config.savannah_threads
+    threads: cfg.savannah_threads
     conda:
         "envs/savannah.yaml"
     shell:
@@ -51,13 +51,13 @@ rule run_savannah:
 
 rule run_bardensr:
     input:
-        c=config.codebook_file,
-        i=config.sim_img_template,
+        c=cfg.codebook_file,
+        i=cfg.sim_img_template,
     output:
-        config.spots_template,
+        cfg.spots_template,
     wildcard_constraints:
         decoder="bardensr",
-    threads: config.bardensr_threads
+    threads: cfg.bardensr_threads
     conda:
         "envs/bardensr.yaml"
     shell:
@@ -66,18 +66,18 @@ rule run_bardensr:
 
 rule run_deepcell:
     input:
-        c=config.codebook_file,
-        d=config.data_org_file,
-        i=config.sim_img_template,
+        c=cfg.codebook_file,
+        d=cfg.data_org_file,
+        i=cfg.sim_img_template,
     output:
-        config.spots_template,
+        cfg.spots_template,
     params:
-        config.deepcell_model_path,
+        cfg.deepcell_model_path,
     wildcard_constraints:
         decoder="deepcell",
     conda:
         "envs/deepcell.yaml"
-    threads: config.deepcell_threads
+    threads: cfg.deepcell_threads
     shell:
         "python scripts/run_deepcell.py "
         "-c {input.c} "
@@ -90,11 +90,11 @@ rule run_deepcell:
 
 rule build_jsit_psf:
     output:
-        config.jsit_psf_file,
+        cfg.jsit_psf_file,
     params:
-        j=config.jsit_src_dir,
-        p=config.jsit_patch_size,
-        s=config.jsit_scale_factor,
+        j=cfg.jsit_src_dir,
+        p=cfg.jsit_patch_size,
+        s=cfg.jsit_scale_factor,
     conda:
         "envs/jsit.yaml"
     shell:
@@ -103,9 +103,9 @@ rule build_jsit_psf:
 
 rule preprocess_imgs:
     input:
-        config.sim_img_template,
+        cfg.sim_img_template,
     output:
-        config.sim_pp_img_template,
+        cfg.sim_pp_img_template,
     conda:
         "envs/serval.yaml"
     shell:
@@ -114,20 +114,20 @@ rule preprocess_imgs:
 
 rule run_jsit:
     input:
-        c=config.codebook_file,
-        i=config.sim_pp_img_template,
-        p=config.jsit_psf_file,
+        c=cfg.codebook_file,
+        i=cfg.sim_pp_img_template,
+        p=cfg.jsit_psf_file,
     output:
-        config.jsit_spots_template,
+        cfg.jsit_spots_template,
     params:
-        j=config.jsit_src_dir,
-        p=config.jsit_patch_size,
-        s=config.jsit_scale_factor,
+        j=cfg.jsit_src_dir,
+        p=cfg.jsit_patch_size,
+        s=cfg.jsit_scale_factor,
     # wildcard_constraints:
     #     decoder="jsit",
     conda:
         "envs/jsit.yaml"
-    threads: config.jsit_threads
+    threads: cfg.jsit_threads
     shell:
         "python scripts/run_jsit.py "
         "-c {input.c} "
@@ -144,10 +144,10 @@ rule run_jsit:
 
 rule compute_jsit_emitter_metrics:
     input:
-        p=config.jsit_spots_template,
-        t=config.sim_emitter_template,
+        p=cfg.jsit_spots_template,
+        t=cfg.sim_emitter_template,
     output:
-        config.jsit_emitter_metrics_template,
+        cfg.jsit_emitter_metrics_template,
     conda:
         "envs/python.yaml"
     shell:
@@ -164,19 +164,19 @@ rule compute_jsit_emitter_metrics:
 rule select_best_jsit:
     input:
         e=expand(
-            config.jsit_emitter_metrics_template,
-            jsit_penalty=config.jsit_penalties,
-            jsit_threshold=config.jsit_thresholds,
+            cfg.jsit_emitter_metrics_template,
+            jsit_penalty=cfg.jsit_penalties,
+            jsit_threshold=cfg.jsit_thresholds,
             allow_missing=True,
         ),
         s=expand(
-            config.jsit_spots_template,
-            jsit_penalty=config.jsit_penalties,
-            jsit_threshold=config.jsit_thresholds,
+            cfg.jsit_spots_template,
+            jsit_penalty=cfg.jsit_penalties,
+            jsit_threshold=cfg.jsit_thresholds,
             allow_missing=True,
         ),
     output:
-        config.spots_template,
+        cfg.spots_template,
     wildcard_constraints:
         decoder="jsit",
     conda:
@@ -187,12 +187,12 @@ rule select_best_jsit:
 
 rule run_serval:
     input:
-        c=config.serval_codebook_file,
-        i=config.sim_img_template,
+        c=cfg.serval_codebook_file,
+        i=cfg.sim_img_template,
     output:
-        config.spots_template,
+        cfg.spots_template,
     params:
-        config.get_decoder_args,
+        cfg.get_decoder_args,
     wildcard_constraints:
         decoder="cosine|cosine-np|nn|scaled",
     conda:
@@ -207,10 +207,10 @@ rule run_serval:
 
 rule compute_bulk_metrics:
     input:
-        p=config.spots_template,
-        t=config.sim_emitter_template,
+        p=cfg.spots_template,
+        t=cfg.sim_emitter_template,
     output:
-        config.bulk_metrics_template,
+        cfg.bulk_metrics_template,
     conda:
         "envs/python.yaml"
     shell:
@@ -225,11 +225,11 @@ rule compute_bulk_metrics:
 
 rule plot_bulk_metrics:
     input:
-        expand(config.bulk_metrics_template, decoder=config.decoders, allow_missing=True),
+        expand(cfg.bulk_metrics_template, decoder=cfg.decoders, allow_missing=True),
     output:
-        config.bulk_metrics_plot_template,
+        cfg.bulk_metrics_plot_template,
     params:
-        " ".join(config.decoders),
+        " ".join(cfg.decoders),
     conda:
         "envs/python.yaml"
     shell:
@@ -239,13 +239,13 @@ rule plot_bulk_metrics:
 rule merge_bulk_metrics:
     input:
         expand(
-            config.bulk_metrics_template,
-            decoder=config.decoders,
-            replicate=range(config.num_replicates),
-            run=config.runs,
+            cfg.bulk_metrics_template,
+            decoder=cfg.decoders,
+            replicate=range(cfg.num_replicates),
+            run=cfg.runs,
         ),
     output:
-        config.bulk_metrics_file,
+        cfg.bulk_metrics_file,
     conda:
         "envs/python.yaml"
     shell:
@@ -254,10 +254,10 @@ rule merge_bulk_metrics:
 
 rule compute_emitter_metrics:
     input:
-        p=config.spots_template,
-        t=config.sim_emitter_template,
+        p=cfg.spots_template,
+        t=cfg.sim_emitter_template,
     output:
-        config.emitter_metrics_template,
+        cfg.emitter_metrics_template,
     conda:
         "envs/python.yaml"
     shell:
@@ -274,14 +274,14 @@ rule compute_emitter_metrics:
 rule plot_emitter_metrics:
     input:
         expand(
-            config.emitter_metrics_template,
-            decoder=config.decoders,
+            cfg.emitter_metrics_template,
+            decoder=cfg.decoders,
             allow_missing=True,
         ),
     output:
-        config.emitter_metrics_plot_template,
+        cfg.emitter_metrics_plot_template,
     params:
-        " ".join(config.decoders),
+        " ".join(cfg.decoders),
     conda:
         "envs/python.yaml"
     shell:
@@ -291,13 +291,13 @@ rule plot_emitter_metrics:
 rule merge_emitter_metrics:
     input:
         expand(
-            config.emitter_metrics_template,
-            decoder=config.decoders,
-            replicate=range(config.num_replicates),
-            run=config.runs,
+            cfg.emitter_metrics_template,
+            decoder=cfg.decoders,
+            replicate=range(cfg.num_replicates),
+            run=cfg.runs,
         ),
     output:
-        config.emitter_metrics_file,
+        cfg.emitter_metrics_file,
     conda:
         "envs/python.yaml"
     shell:
@@ -306,10 +306,10 @@ rule merge_emitter_metrics:
 
 rule compute_summary_metrics:
     input:
-        b=config.bulk_metrics_template,
-        e=config.emitter_metrics_template,
+        b=cfg.bulk_metrics_template,
+        e=cfg.emitter_metrics_template,
     output:
-        config.summary_metrics_template,
+        cfg.summary_metrics_template,
     conda:
         "envs/python.yaml"
     shell:
@@ -319,13 +319,13 @@ rule compute_summary_metrics:
 rule merge_summary_metrics:
     input:
         expand(
-            config.summary_metrics_template,
-            decoder=config.decoders,
-            replicate=range(config.num_replicates),
-            run=config.runs,
+            cfg.summary_metrics_template,
+            decoder=cfg.decoders,
+            replicate=range(cfg.num_replicates),
+            run=cfg.runs,
         ),
     output:
-        config.summary_metrics_file,
+        cfg.summary_metrics_file,
     conda:
         "envs/python.yaml"
     shell:
