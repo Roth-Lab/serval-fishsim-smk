@@ -46,9 +46,10 @@ class ConfigManager(object):
     def savannah_threads(self):
         return self.config["savannah"]["num_threads"]
 
+    # Params
     @property
-    def deepcell_threads(self):
-        return self.config["deepcell"]["num_threads"]
+    def bardensr_threads(self):
+        return self.config["bardensr"]["num_threads"]
 
     @property
     def decoders(self):
