@@ -1,16 +1,19 @@
 channels:
   - conda-forge
+
 dependencies:
-  - python>=3.7
+  - python=3.10
   - click
-  - h5py>=3
+  - h5py=3.*
   - numba
   - numba-scipy>=0.3
-  - numpy
+  - numpy=1.26.*
   - pandas
   - pytables
-  - scikit-image
+  - opencv
+  - scikit-image=0.22.*
   - scipy
+  - scikit-learn
   - pip
   - pip:
-      - savannah @ git+ssh://git@github.com/Roth-Lab/savannah.git@84891cc
+      - "git+ssh://git@github.com/Roth-Lab/savannah@99f32c1253e1ed1a680fec2514d112d91798ab0d"
