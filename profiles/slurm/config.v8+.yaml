@@ -1,39 +1,30 @@
-software-deployment-method: conda
-use-conda: True
-
-latency-wait: 60
-rerun-incomplete: True
-retries: 2
-local-cores: 1
-
-executor: slurm
-
 default-resources:
     slurm_partition: general
     mem_mb: 2048 * attempt
-    runtime: f"{120 * attempt}m"
+    runtime: 120 * attempt
 
 set-resources:
   compute_bulk_metrics:
     mem_mb: 2048 * attempt
-    runtime: f"{600 * attempt}m"
+    runtime: 600 * attempt
   simulate_data:
     mem_mb: 4096 * attempt
-    runtime: f"{240 * attempt}m"
+    runtime: 240 * attempt
   run_bardensr:
     mem_mb: 16384 * attempt
-    runtime: f"{240 * attempt}m"
+    runtime: 240 * attempt
   run_deepcell:
     mem_mb: 16384 * attempt
-    runtime: f"{240 * attempt}m"
+    runtime: 240 * attempt
   build_jsit_psf:
     mem_mb: 16384 * attempt
-    runtime: f"{1440 * attempt}m"
+    runtime: 1440 * attempt
   run_jsit:
     mem_mb: 16384 * attempt
-    runtime: f"{240 * attempt}m"
+    runtime: 240 * attempt
+  run_savannah:
+    mem_mb: 16384 * attempt
+    runtime: 240 * attempt
   run_serval:
     mem_mb: 4096 * attempt
-    runtime: f"{120 * attempt}m"
-
-jobs: unlimited
+    runtime: 120 * attempt
