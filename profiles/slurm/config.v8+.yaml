@@ -1,3 +1,13 @@
+software-deployment-method: conda
+use-conda: True
+
+latency-wait: 60
+rerun-incomplete: True
+retries: 2
+local-cores: 1
+
+executor: slurm
+
 default-resources:
     slurm_partition: general
     mem_mb: 2048 * attempt
