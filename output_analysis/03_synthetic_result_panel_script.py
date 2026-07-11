@@ -7,9 +7,9 @@ import seaborn as sns
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
-RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
+RESULTS_DIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/results/paper_100"
 
-ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
+ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/output/paper_100"
 
 OUTDIR = rf"{ANALYSIS_DIR}/figure2_synthetic_main"
 os.makedirs(OUTDIR, exist_ok=True)
@@ -93,6 +93,7 @@ decoder_labels = {
     "bardensr": "BarDensr",
     "deepcell": "DeepCell-Spots",
     "deepcell-spots": "DeepCell-Spots",
+    "savannah": "Savannah",
 }
 
 decoder_palette = {
@@ -101,6 +102,7 @@ decoder_palette = {
     "DeepCell-Spots":   "#9467bd",  # Purple
     "MERlin":           "#1f77b4",  # Blue
     "Nearest neighbor": "#ff7f0e",  # Orange
+    "Savannah":         "#e377c2",  # Pink
 }
 
 fig_df["decoder_label"] = fig_df["decoder"].map(decoder_labels).fillna(fig_df["decoder"])

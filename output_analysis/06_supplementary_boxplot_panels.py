@@ -6,9 +6,9 @@ import seaborn as sns
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
-RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
+RESULTS_DIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/results/paper_100"
 
-ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
+ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/output/paper_100"
 
 OUTDIR = os.path.join(
     ANALYSIS_DIR,
@@ -103,6 +103,7 @@ decoder_labels = {
     "bardensr": "BarDensr",
     "deepcell": "DeepCell-Spots",
     "deepcell-spots": "DeepCell-Spots",
+    "savannah": "Savannah",
 }
 
 df["decoder_label"] = (
@@ -114,6 +115,7 @@ df["decoder_label"] = (
 
 # Vertical (top-to-bottom) order of decoders within each boxplot cell
 decoder_order = [
+    "Savannah",
     "Cosine",
     "MERlin",
     "BarDensr",
@@ -137,6 +139,7 @@ decoder_palette = {
     "DeepCell-Spots":   "#9467bd",  # Purple
     "MERlin":           "#1f77b4",  # Blue
     "Nearest neighbor": "#ff7f0e",  # Orange
+    "Savannah":         "#e377c2",  # Pink
 }
 
 # --------------------------------------------------

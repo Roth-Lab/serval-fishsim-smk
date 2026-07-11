@@ -4,9 +4,9 @@ import pandas as pd
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
-RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
+RESULTS_DIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/results/paper_100"
 
-ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
+ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/output/paper_100"
 
 OUTDIR = rf"{ANALYSIS_DIR}/manuscript_summary_tables"
 os.makedirs(OUTDIR, exist_ok=True)
@@ -105,6 +105,7 @@ decoder_labels = {
     "bardensr": "BarDensr",
     "deepcell-spots": "DeepCell-Spots",
     "deepcell": "DeepCell-Spots",
+    "savannah": "Savannah",
 }
 
 df_primary["decoder_label"] = (
@@ -182,6 +183,7 @@ for decoder, g in df_primary.groupby("decoder_label"):
 paper_table = pd.DataFrame(rows)
 
 decoder_order = [
+    "Savannah",
     "Cosine",
     "MERlin",
     "BarDensr",

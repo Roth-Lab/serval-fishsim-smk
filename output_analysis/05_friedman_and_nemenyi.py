@@ -7,8 +7,9 @@ import numpy as np
 # --------------------------------------------------
 # Paths
 # --------------------------------------------------
-RESULTS_DIR = r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100"
-ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100"
+RESULTS_DIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/results/paper_100"
+
+ANALYSIS_DIR = "/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/output/paper_100"
 
 OUTDIR = os.path.join(
     ANALYSIS_DIR,

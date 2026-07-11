@@ -6,13 +6,13 @@ import seaborn as sns
 from pathlib import Path
 from sklearn.metrics import auc
 
-OUTDIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk/output/paper_100/reviewer_transcript_level_metrics"
+OUTDIR = r"/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/output/paper_100/reviewer_transcript_level_metrics"
 os.makedirs(OUTDIR, exist_ok=True)
 
 # --------------------------------------------------
 # 1. Load data / clean decoder names
 # --------------------------------------------------
-base_dir = Path(r"/projects/molonc/scratch/aroth/projects/serval/results/fishsim/paper_100")
+base_dir = Path(r"/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/results/paper_100")
 
 print("STARTING READ")
 emitter_df = pd.read_csv(base_dir / "emitter_metrics.tsv.gz", sep="\t")
