@@ -37,3 +37,7 @@ This postprocessing step uses the decoders (which we have added "Savannah" as we
 Once postprocessing is done:
 
 Ensure the scripts in output_analysis are up to date and run those.
+
+Step 1: 01 must be run first by itself.
+
+Step 2: 02 to 06 can then be run in parallel. 
