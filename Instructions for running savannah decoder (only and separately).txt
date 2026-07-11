@@ -1,0 +1,39 @@
+Main directory: /projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah
+
+
+To run Savannah only, presuming 
+
+1) we use existing synthetic datasets;
+2) the other decoders already have the results
+
+Then, 
+
+Step 1: bash build_savannah_manifest.sh to generate manifest.tsv
+
+Step 2: ensure an empty logs directory
+
+Step 3: sbatch --array=1-1000 run_savannah_array.sh
+
+
+Once the decoding is done, we can run the postprocess steps only using Snakefile.postprocess_only.
+
+Step 1: Open a new screen
+
+Step 2: 
+
+snakemake \
+  -s Snakefile.postprocess_only \
+  --configfile config/paper-cluster.yaml \
+  --config out_dir=/projects/molonc/scratch/jtsui/serval-fishsim-smk-with-savannah/results/paper_100 \
+  --profile profiles/slurm \
+  --jobs 1000 \
+  --cores 1 \
+  --use-conda \
+  -p
+
+
+This postprocessing step uses the decoders (which we have added "Savannah" as well) in utils.py.
+
+Once postprocessing is done:
+
+Ensure the scripts in output_analysis are up to date and run those.
