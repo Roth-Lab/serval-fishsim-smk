@@ -178,10 +178,13 @@ for i, (ax, metric) in enumerate(zip(axes, plot_metrics)):
     # Slanted scenario labels
     ax.tick_params(axis="x", rotation=45)
 
-    # Consistent y-axis scaling
-    if metric != "exc_fdr_at_max_f1":
-        ax.set_ylim(0, 1.05)
-    else:
+    # Metric-specific y-axis scaling
+    if metric == "max_r":
+        # Pearson r can be negative
+        ymin = min(-0.05, sub[metric].min() - 0.05)
+        ax.set_ylim(ymin, 1.05)
+    
+    elif metric == "exc_fdr_at_max_f1":
         ax.set_ylim(
             0,
             max(
@@ -189,7 +192,11 @@ for i, (ax, metric) in enumerate(zip(axes, plot_metrics)):
                 sub[metric].max() * 1.15
             )
         )
-
+    
+    else:
+        ax.set_ylim(0, 1.05)
+    
+    
 # Single legend on right side
 fig.legend(
     legend_handles,
